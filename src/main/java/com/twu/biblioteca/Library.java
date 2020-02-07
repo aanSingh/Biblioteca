@@ -11,11 +11,6 @@ public class Library {
         this.books = new ArrayList<>();
         this.checkoutBooks = new ArrayList<>();
 
-        books = new ArrayList<>();
-        Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
-        Book book2 = new Book("The Lord of the Rings Trilogy", "J.R.R. Tolkien", 1996);
-        books.add(book1);
-        books.add(book2);
     }
 
     Library(List<Book> books) {
@@ -38,9 +33,9 @@ public class Library {
         }
     }
 
-    public Boolean containsCheckoutBook(String checkoutBook) {
+    public Boolean containsCheckoutBook(String bookName) {
         for (Book book : checkoutBooks) {
-            if (book.getName().equals(checkoutBook))
+            if (book.getName().equals(bookName))
                 return true;
         }
         return false;
@@ -56,4 +51,11 @@ public class Library {
         }
     }
 
+    public boolean containsBook(String bookName) {
+        for (Book book : books) {
+            if (book.getName().equals(bookName))
+                return true;
+        }
+        return false;
+    }
 }

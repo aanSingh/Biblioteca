@@ -51,6 +51,7 @@ class LibraryTest {
         library.checkoutBook(book);
 
         assertTrue(library.containsCheckoutBook(book));
+        assertFalse(library.containsBook(book));
 
     }
 
@@ -69,6 +70,7 @@ class LibraryTest {
         library.returnBook(book);
 
         assertFalse(library.containsCheckoutBook(book));
+        assertTrue(library.containsBook(book));
     }
 
 }
