@@ -26,22 +26,39 @@ public class Bibliotecha {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Biblioteca");
-            System.out.println("a) List of books");
-            System.out.println("b) Exit");
-            System.out.println("Enter choice : ");
+            System.out.println("    Biblioteca");
+            System.out.println("    a) List of books");
+            System.out.println("    b) Checkout a book");
+            System.out.println("    c) Exit");
+            System.out.println("    Enter choice : ");
 
             switch (scanner.next()) {
                 case "a":
                     DisplayAllBooks();
                     break;
                 case "b":
+                    checkout();
+                    break;
+                case "c":
                     return;
                 default:
                     System.out.println(Message.invalidMessage());
 
             }
         }
+    }
+
+    void checkout() {
+        System.out.println("Book name : ");
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+
+        Library library = new Library();
+        library.checkoutBook(input);
+
+        if (library.containsCheckoutBook(input))
+            System.out.println(Message.SuccessMessage());
+
     }
 
     public static void main(String[] args) {

@@ -22,7 +22,7 @@ public class Library {
         return this.books;
     }
 
-    public void checkout(String bookName) {
+    public void checkoutBook(String bookName) {
         for (Book book : books) {
             if (book.getName().equals(bookName)) {
                 books.remove(book);
