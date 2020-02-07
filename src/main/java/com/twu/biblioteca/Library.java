@@ -10,6 +10,12 @@ public class Library {
     Library() {
         this.books = new ArrayList<>();
         this.checkoutBooks = new ArrayList<>();
+
+        books = new ArrayList<>();
+        Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
+        Book book2 = new Book("The Lord of the Rings Trilogy", "J.R.R. Tolkien", 1996);
+        books.add(book1);
+        books.add(book2);
     }
 
     Library(List<Book> books) {

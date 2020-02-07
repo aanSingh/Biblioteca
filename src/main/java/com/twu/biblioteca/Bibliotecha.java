@@ -57,7 +57,9 @@ public class Bibliotecha {
         library.checkoutBook(input);
 
         if (library.containsCheckoutBook(input))
-            System.out.println(Message.SuccessMessage());
+            System.out.println(Message.successMessage());
+        else
+            System.out.println(Message.unsuccessfulCheckout());
 
     }
 
