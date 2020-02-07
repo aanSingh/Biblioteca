@@ -6,6 +6,8 @@ public class Message {
     private static final String SUCCESSFUL_CHECKOUT = "Thank you! Enjoy the book";
     private static final String UNSUCCESSFUL_CHECKOUT = "Sorry, that book is not available";
     private static final String SUCCESSFUL_RETURN = "Thank you for returning the book";
+    private static final String UNSUCCESSFUL_RETURN = "That is not a valid book to return.";
+
 
     static String welcomeMessage() {
         return WELCOME;
@@ -25,5 +27,9 @@ public class Message {
 
     static String successfulReturn() {
         return SUCCESSFUL_RETURN;
+    }
+
+    static String unsuccessfulReturn() {
+        return UNSUCCESSFUL_RETURN;
     }
 }

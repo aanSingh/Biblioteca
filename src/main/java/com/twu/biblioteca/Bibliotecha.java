@@ -62,6 +62,8 @@ public class Bibliotecha {
 
         if (library.containsBook(input) && !library.containsCheckoutBook(input))
             System.out.println(Message.successfulReturn());
+        else
+            System.out.println(Message.unsuccessfulReturn());
 
     }
 
