@@ -4,9 +4,13 @@ import java.util.Objects;
 
 public class Book {
     private final String name;
+    private final String author;
+    private final int publicationYear;
 
-    public Book(String name) {
+    public Book(String name, String author, int publicationYear) {
         this.name = name;
+        this.author = author;
+        this.publicationYear = publicationYear;
     }
 
     @Override
@@ -14,11 +18,13 @@ public class Book {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Objects.equals(name, book.name);
+        return publicationYear == book.publicationYear &&
+                Objects.equals(name, book.name) &&
+                Objects.equals(author, book.author);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(name, author, publicationYear);
     }
 }
