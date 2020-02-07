@@ -27,4 +27,16 @@ public class Book {
     public int hashCode() {
         return Objects.hash(name, author, publicationYear);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public int getPublicationYear() {
+        return publicationYear;
+    }
 }

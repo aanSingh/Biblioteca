@@ -30,8 +30,9 @@ class LibraryTest {
         Book book2 = new Book("The Lord of the Rings Trilogy", "J.R.R. Tolkien", 1996);
         books.add(book1);
         books.add(book2);
-        Library library = new Library(books);
+        Library library = new Library();
 
+        System.out.println(library.displayBooks());
         List<Book> actualBooks = library.displayBooks();
 
         assertTrue(actualBooks.equals(books));
