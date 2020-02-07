@@ -54,4 +54,21 @@ class LibraryTest {
 
     }
 
+    @Test
+    public void shouldLetCustomerReturnOneBook() {
+        List<Book> books;
+        books = new ArrayList<>();
+        Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
+        Book book2 = new Book("The Lord of the Rings Trilogy", "J.R.R. Tolkien", 1996);
+        books.add(book1);
+        books.add(book2);
+        Library library = new Library(books);
+        String book = "The Harry Potter series";
+        library.checkoutBook(book);
+
+        library.returnBook(book);
+
+        assertFalse(library.containsCheckoutBook(book));
+    }
+
 }

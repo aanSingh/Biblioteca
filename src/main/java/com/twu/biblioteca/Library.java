@@ -45,4 +45,15 @@ public class Library {
         }
         return false;
     }
+
+    public void returnBook(String bookName) {
+        for (Book book : checkoutBooks) {
+            if (book.getName().equals(bookName)) {
+                books.add(book);
+                checkoutBooks.remove(book);
+                break;
+            }
+        }
+    }
+
 }
