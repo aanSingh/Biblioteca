@@ -1,15 +1,24 @@
 package com.twu.biblioteca;
 
-public class Library {
-    private Book book;
+import java.util.ArrayList;
+import java.util.List;
 
-    public void addBook(Book book) {
-        this.book = book;
+public class Library {
+    private List<Book> books;
+
+    Library() {
+        books = new ArrayList<>();
     }
 
-    public boolean hasBook(Book book) {
-        if (this.book.equals(book))
-            return true;
+    public void addBook(Book book) {
+        books.add(book);
+    }
+
+    public boolean hasBook(Book book1) {
+        for (Book book : books) {
+            if (book.equals(book1))
+                return true;
+        }
         return false;
     }
 
