@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryTest {
 
@@ -19,7 +19,7 @@ class LibraryTest {
 
         List<Book> actualBooks = library.displayBooks();
 
-        assertTrue(actualBooks.equals(books));
+        assertEquals(actualBooks, books);
     }
 
     @Test
@@ -30,12 +30,11 @@ class LibraryTest {
         Book book2 = new Book("The Lord of the Rings Trilogy", "J.R.R. Tolkien", 1996);
         books.add(book1);
         books.add(book2);
-        Library library = new Library();
+        Library library = new Library(books);
 
-        System.out.println(library.displayBooks());
         List<Book> actualBooks = library.displayBooks();
 
-        assertTrue(actualBooks.equals(books));
+        assertEquals(actualBooks, books);
     }
 
 }

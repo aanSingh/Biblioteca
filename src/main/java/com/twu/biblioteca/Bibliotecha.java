@@ -9,7 +9,7 @@ public class Bibliotecha {
     }
 
     void welcomeMessage() {
-        System.out.println(Message.getWelcomeMessage());
+        System.out.println(Message.welcomeMessage());
     }
 
     void DisplayAllBooks() {
@@ -31,10 +31,14 @@ public class Bibliotecha {
         System.out.println("Enter choice : ");
         choice = scanner.next();
 
-        if ("a".equals(choice)) {
-            DisplayAllBooks();
-        }
+        switch (choice) {
+            case "a":
+                DisplayAllBooks();
+                break;
+            default:
+                System.out.println(Message.invalidMessage());
 
+        }
     }
 
     public static void main(String[] args) {

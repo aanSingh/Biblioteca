@@ -7,7 +7,7 @@ public class Library {
     private List<Book> books;
 
     Library() {
-        books = new ArrayList<>();
+        this.books = new ArrayList<>();
     }
 
     Library(List<Book> books) {
@@ -16,6 +16,6 @@ public class Library {
     }
 
     public List<Book> displayBooks() {
-        return books;
+        return this.books;
     }
 }
