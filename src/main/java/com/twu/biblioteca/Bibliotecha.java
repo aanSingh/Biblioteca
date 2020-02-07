@@ -1,16 +1,17 @@
+package com.twu.biblioteca;
+
 public class Bibliotecha {
-    String welcomeMessage;
 
     Bibliotecha() {
-        welcomeMessage = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
     }
 
-    void welcome() {
-        System.out.println(welcomeMessage);
+    void welcomeMessage() {
+        System.out.println(Message.getWelcomeMessage());
     }
 
     public static void main(String[] args) {
         Bibliotecha bibliotecha = new Bibliotecha();
-        bibliotecha.welcome();
+        bibliotecha.welcomeMessage();
+
     }
 }
