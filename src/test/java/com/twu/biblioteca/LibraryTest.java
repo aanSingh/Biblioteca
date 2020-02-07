@@ -37,4 +37,19 @@ class LibraryTest {
         assertEquals(actualBooks, books);
     }
 
+    @Test
+    public void shouldLetCustomerCheckoutOneBook() {
+        List<Book> books;
+        books = new ArrayList<>();
+        Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
+        books.add(book1);
+        Library library = new Library(books);
+        String book = "The Harry Potter series";
+
+        library.checkout(book);
+
+        assertTrue(library.containsCheckoutBook(book));
+
+    }
+
 }
