@@ -1,13 +1,15 @@
 package com.twu.biblioteca;
 
-public class Library {
-    private Book book;
+import java.util.List;
 
-    Library(Book book) {
-        this.book = book;
+public class Library {
+    private List<Book> books;
+
+    Library(List<Book> books) {
+        this.books = books;
     }
 
-    public Book displayBooks() {
-        return book;
+    public List<Book> displayBooks() {
+        return books;
     }
 }
