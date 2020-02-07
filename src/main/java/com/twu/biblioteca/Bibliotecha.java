@@ -24,20 +24,23 @@ public class Bibliotecha {
 
     void menu() {
         Scanner scanner = new Scanner(System.in);
-        String choice;
 
-        System.out.println("Biblioteca");
-        System.out.println("a) List of books");
-        System.out.println("Enter choice : ");
-        choice = scanner.next();
+        while (true) {
+            System.out.println("Biblioteca");
+            System.out.println("a) List of books");
+            System.out.println("b) Exit");
+            System.out.println("Enter choice : ");
 
-        switch (choice) {
-            case "a":
-                DisplayAllBooks();
-                break;
-            default:
-                System.out.println(Message.invalidMessage());
+            switch (scanner.next()) {
+                case "a":
+                    DisplayAllBooks();
+                    break;
+                case "b":
+                    return;
+                default:
+                    System.out.println(Message.invalidMessage());
 
+            }
         }
     }
 
