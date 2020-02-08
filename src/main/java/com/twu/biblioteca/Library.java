@@ -10,7 +10,6 @@ public class Library {
     Library() {
         this.books = new ArrayList<>();
         this.checkoutBooks = new ArrayList<>();
-
     }
 
     Library(List<Book> books) {

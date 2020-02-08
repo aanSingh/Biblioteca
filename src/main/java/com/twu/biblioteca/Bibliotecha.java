@@ -9,7 +9,7 @@ public class Bibliotecha {
     }
 
     void welcomeMessage() {
-        System.out.println(Message.welcomeMessage());
+        System.out.println(Message.WELCOME);
     }
 
     void DisplayAllBooks() {
@@ -46,7 +46,7 @@ public class Bibliotecha {
                 case "d":
                     return;
                 default:
-                    System.out.println(Message.invalidMessage());
+                    System.out.println(Message.INVALID_OPTION);
 
             }
         }
@@ -61,9 +61,9 @@ public class Bibliotecha {
         library.returnBook(input);
 
         if (library.containsBook(input) && !library.containsCheckoutBook(input))
-            System.out.println(Message.successfulReturn());
+            System.out.println(Message.SUCCESSFUL_RETURN);
         else
-            System.out.println(Message.unsuccessfulReturn());
+            System.out.println(Message.UNSUCCESSFUL_RETURN);
 
     }
 
@@ -76,9 +76,9 @@ public class Bibliotecha {
         library.checkoutBook(input);
 
         if (library.containsCheckoutBook(input) && !library.containsBook(input))
-            System.out.println(Message.successMessage());
+            System.out.println(Message.SUCCESSFUL_CHECKOUT);
         else
-            System.out.println(Message.unsuccessfulCheckout());
+            System.out.println(Message.UNSUCCESSFUL_CHECKOUT);
     }
 
     public static void main(String[] args) {
