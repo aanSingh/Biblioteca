@@ -2,6 +2,8 @@ package com.twu.biblioteca;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class BibliotechaTest {
@@ -12,6 +14,12 @@ class BibliotechaTest {
         String expectedMessage = Message.WELCOME;
 
         assertTrue(actualMessage.equals(expectedMessage));
+    }
+
+    @Test
+    public void shouldReturnListOfBooks() {
+        Bibliotecha bibliotecha = new Bibliotecha();
+        List<Book> books = bibliotecha.getAllBooks();
     }
 
 }
