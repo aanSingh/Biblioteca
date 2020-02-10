@@ -27,7 +27,7 @@ public class Library {
             if (book.getName().equals(bookName)) {
                 books.remove(book);
                 checkoutBooks.add(book);
-                break;
+                return;
             }
         }
     }
