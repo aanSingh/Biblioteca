@@ -31,4 +31,21 @@ class MenuTest {
 
         assertEquals(2, menu.itemSize());
     }
+
+
+    @Test
+    public void shouldAddThreeMenuItemToMenu() {
+        MenuItem menuItem1 = new ViewBooks();
+        MenuItem menuItem2 = new checkOut();
+        MenuItem menuItem3 = new returnBook();
+
+        List<MenuItem> menuItems = new ArrayList<>();
+        menuItems.add(menuItem1);
+        menuItems.add(menuItem2);
+        menuItems.add(menuItem3);
+
+        Menu menu = new Menu(menuItems);
+
+        assertEquals(3, menu.itemSize());
+    }
 }
