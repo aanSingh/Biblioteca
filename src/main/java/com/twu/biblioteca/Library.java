@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class Library {
     private List<Book> books;
@@ -18,8 +19,10 @@ public class Library {
         this.books = books;
     }
 
-    public List<Book> displayBooks() {
-        return this.books;
+    public void displayBooks() {
+        for (Book book: books) {
+            book.display();
+        }
     }
 
     public void checkoutBook(String bookName) {

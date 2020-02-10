@@ -8,8 +8,8 @@ public class Bibliotecha {
         return Message.WELCOME;
     }
 
-    public List<Book> getAllBooks() {
-        Library library = new Library();
-        return library.displayBooks();
-    }
+//    public List<Book> getAllBooks() {
+//        Library library = new Library();
+//        return library.displayBooks();
+//    }
 }

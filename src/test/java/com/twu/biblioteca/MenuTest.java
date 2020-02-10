@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class MenuTest {
     @Test
     public void shouldAddAllMenuItemToMenu() {
-        MenuItem menuItem1 = new ViewBooks();
-        MenuItem menuItem2 = new checkOut();
-        MenuItem menuItem3 = new returnBook();
-        MenuItem menuItem4 = new Quit();
+        MenuItem menuItem1 = new ViewBooks("View Book");
+        MenuItem menuItem2 = new CheckOut("Check Out");
+        MenuItem menuItem3 = new ReturnBook("Return Book");
+        MenuItem menuItem4 = new Quit("Quit");
 
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(menuItem1);
@@ -25,4 +25,25 @@ class MenuTest {
 
         assertEquals(4, menu.itemSize());
     }
+
+    @Test
+    public void shouldReturnMenuItems(){
+        MenuItem menuItem1 = new ViewBooks("View Books");
+        MenuItem menuItem2 = new CheckOut("Check Out");
+        MenuItem menuItem3 = new ReturnBook("Return Book");
+        MenuItem menuItem4 = new Quit("Quit");
+        List<MenuItem> menuItems = new ArrayList<>();
+        menuItems.add(menuItem1);
+        menuItems.add(menuItem2);
+        menuItems.add(menuItem3);
+        menuItems.add(menuItem4);
+        Menu menu = new Menu(menuItems);
+
+        String actualMenu = menu.display();
+        String expectedMenu = "Biblotecha Library\n1. View Books\n2. Check Out\n3. Return Book\n4. Quit\n";
+
+        assertEquals(expectedMenu, actualMenu);
+
+    }
+
 }

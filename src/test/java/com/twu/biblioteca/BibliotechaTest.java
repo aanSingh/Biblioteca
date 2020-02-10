@@ -16,10 +16,5 @@ class BibliotechaTest {
         assertTrue(actualMessage.equals(expectedMessage));
     }
 
-    @Test
-    public void shouldReturnListOfBooks() {
-        Bibliotecha bibliotecha = new Bibliotecha();
-        List<Book> books = bibliotecha.getAllBooks();
-    }
 
 }

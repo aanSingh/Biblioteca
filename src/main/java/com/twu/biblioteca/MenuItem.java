@@ -1,4 +1,5 @@
 package com.twu.biblioteca;
 
-public interface MenuItem {
+public  abstract class MenuItem {
+    public String description;
 }
