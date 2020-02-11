@@ -51,4 +51,17 @@ class BibliotechaTest {
 
     }
 
+    @Test
+    public void shouldReturnBookNameEnteredByUser() {
+        Menu menu = mock(Menu.class);
+        Library library = mock(Library.class);
+        Bibliotecha bibliotecha = new Bibliotecha(library, menu);
+        bibliotecha.setBookName("The Harry Potter series");
+        String expectedBookName = "The Harry Potter series";
+        String actualBookName = bibliotecha.getBookName();
+
+        assertEquals(expectedBookName, actualBookName);
+
+    }
+
 }
