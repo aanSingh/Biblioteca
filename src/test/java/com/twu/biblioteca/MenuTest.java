@@ -62,4 +62,21 @@ class MenuTest {
 
     }
 
+    @Test
+    public void shouldCheckOutBookWhenOptionTwoIsSelected() {
+        List<MenuItem> menuItems = new ArrayList<>();
+        MenuItem viewBook = mock(ViewBooks.class);
+        MenuItem checkOut = mock(CheckOut.class);
+        menuItems.add(viewBook);
+        menuItems.add(checkOut);
+        Menu menu = new Menu(menuItems);
+        Library library = mock(Library.class);
+        Bibliotecha bibliotecha = mock(Bibliotecha.class);
+
+        menu.select(2, library, bibliotecha);
+
+        verify(checkOut, times(1)).action(library, bibliotecha);
+
+    }
+
 }

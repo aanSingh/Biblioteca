@@ -2,9 +2,6 @@ package com.twu.biblioteca;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.mockito.Mockito.*;
 
 class CheckOutTest {
