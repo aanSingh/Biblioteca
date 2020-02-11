@@ -16,7 +16,7 @@ class LibraryTest {
         Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
         books.add(book1);
         Library library = new Library(books);
-        library.displayBooks();
+//        library.displayBooks();
 
 //        List<Book> actualBooks = library.displayBooks();
 
@@ -32,7 +32,7 @@ class LibraryTest {
         books.add(book1);
         books.add(book2);
         Library library = new Library(books);
-        library.displayBooks();
+//        library.displayBooks();
 
 
 //        List<Book> actualBooks = library.displayBooks();

@@ -1,8 +1,6 @@
 package com.twu.biblioteca;
 
-import java.io.Serializable;
 import java.util.Objects;
-import java.util.stream.Stream;
 
 public class Book {
     private final String name;
@@ -34,9 +32,8 @@ public class Book {
         return name;
     }
 
-    public void display(){
-        Stream<? extends Serializable> books = Stream.of(name, author, publicationYear);
-        books.forEach(System.out::println);
+    public String display() {
+        return name + "\t\t" + author + "\t\t" + publicationYear + "\n";
     }
 
 }

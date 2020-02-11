@@ -2,7 +2,6 @@ package com.twu.biblioteca;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Library {
     private List<Book> books;
@@ -11,6 +10,10 @@ public class Library {
     Library() {
         this.books = new ArrayList<>();
         this.checkoutBooks = new ArrayList<>();
+        Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
+        Book book2 = new Book("The Lord of the Rings Trilogy", "J.R.R. Tolkien", 1996);
+        books.add(book1);
+        books.add(book2);
     }
 
     Library(List<Book> books) {
@@ -19,18 +22,17 @@ public class Library {
         this.books = books;
     }
 
-    public void displayBooks() {
-        for (Book book: books) {
-            book.display();
-        }
+    public List<Book> books() {
+        return books;
     }
 
     public void checkoutBook(String bookName) {
+        System.out.println("Checkout");
         for (Book book : books) {
             if (book.getName().equals(bookName)) {
                 books.remove(book);
                 checkoutBooks.add(book);
-                return;
+                break;
             }
         }
     }
