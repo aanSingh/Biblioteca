@@ -79,4 +79,24 @@ class MenuTest {
 
     }
 
+
+    @Test
+    public void shouldReturnBookWhenOptionThreeIsSelected() {
+        List<MenuItem> menuItems = new ArrayList<>();
+        MenuItem returnBook = mock(ReturnBook.class);
+        MenuItem viewBook = mock(ViewBooks.class);
+        MenuItem checkOut = mock(CheckOut.class);
+        menuItems.add(returnBook);
+        menuItems.add(viewBook);
+        menuItems.add(checkOut);
+        Menu menu = new Menu(menuItems);
+        Library library = mock(Library.class);
+        Bibliotecha bibliotecha = mock(Bibliotecha.class);
+
+        menu.select(3, library, bibliotecha);
+
+        verify(checkOut, times(1)).action(library, bibliotecha);
+
+    }
+
 }
