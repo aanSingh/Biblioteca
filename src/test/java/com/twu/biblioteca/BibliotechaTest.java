@@ -39,4 +39,16 @@ class BibliotechaTest {
 
     }
 
+    @Test
+    public void shouldExecuteOptionTwo() {
+        Menu menu = mock(Menu.class);
+        Library library = mock(Library.class);
+        Bibliotecha bibliotecha = new Bibliotecha(library, menu);
+
+        bibliotecha.execute(2);
+
+        verify(menu, times(1)).select(2, library, bibliotecha);
+
+    }
+
 }
