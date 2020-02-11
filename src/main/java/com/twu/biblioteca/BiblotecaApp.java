@@ -28,10 +28,11 @@ public class BiblotecaApp {
         if (choice == 1) {
             bibliotecha.execute(choice);
             System.out.println(bibliotecha.getBooks());
-        }
-        else if (choice == 2 || choice == 3) {
+        } else if (choice == 2 || choice == 3) {
             enterBookName();
             bibliotecha.execute(choice);
+        } else if (choice == 4) {
+            bibliotecha.quit();
         }
 
     }

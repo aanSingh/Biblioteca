@@ -42,4 +42,12 @@ public class Bibliotecha {
     public void quit() {
         System.exit(0);
     }
+
+    public String checkOutBook() {
+        if (library.containsCheckoutBook(bookNameByUser) & !library.containsBook(bookNameByUser))
+            return Message.SUCCESSFUL_CHECKOUT;
+        else
+            return Message.UNSUCCESSFUL_CHECKOUT;
+    }
+
 }
