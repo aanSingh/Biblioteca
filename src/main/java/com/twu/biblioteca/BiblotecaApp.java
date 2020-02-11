@@ -31,6 +31,7 @@ public class BiblotecaApp {
         } else if (choice == 2 || choice == 3) {
             enterBookName();
             bibliotecha.execute(choice);
+            System.out.println(bibliotecha.checkOutBook());
         } else if (choice == 4) {
             bibliotecha.quit();
         }

@@ -1,6 +1,6 @@
 package com.twu.biblioteca;
 
-import org.junit.jupiter.api.Assertions;
+import com.twu.biblioteca.logic.Library;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

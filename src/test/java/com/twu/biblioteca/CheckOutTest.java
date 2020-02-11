@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.logic.Library;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;

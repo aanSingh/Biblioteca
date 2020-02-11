@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.logic.Library;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -64,4 +64,20 @@ class BibliotechaTest {
 
     }
 
+    @Test
+    public void shouldDisplaySuccessMessageWhenBookIsCheckedOutSuccessfully () {
+        Menu menu = mock(Menu.class);
+        Library library = mock(Library.class);
+        Bibliotecha bibliotecha = new Bibliotecha(library, menu);
+
+        when(library.containsCheckoutBook("The Harry Potter series")).thenReturn(true);
+        when(library.containsBook("The Harry Potter series")).thenReturn(false);
+
+        String actualMessage = bibliotecha.checkOutBook();
+
+        System.out.println(actualMessage);
+//        System.out.println();
+
+//        assertEquals(actualMessage, Message.SUCCESSFUL_CHECKOUT);
+    }
 }

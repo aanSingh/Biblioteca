@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.logic.Book;
+import com.twu.biblioteca.logic.Library;
+
 public class CheckOut extends MenuItem {
     public CheckOut(String description) {
         this.description = description;
@@ -14,7 +17,6 @@ public class CheckOut extends MenuItem {
         for (Book book : library.books()) {
             books += book.display();
         }
-
         bibloteca.books(books);
     }
 }

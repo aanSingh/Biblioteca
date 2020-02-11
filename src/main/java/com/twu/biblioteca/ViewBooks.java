@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.logic.Book;
+import com.twu.biblioteca.logic.Library;
+
 import java.util.List;
 
 public class ViewBooks extends MenuItem {

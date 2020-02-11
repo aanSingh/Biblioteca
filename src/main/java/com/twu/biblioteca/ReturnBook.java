@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.logic.Book;
+import com.twu.biblioteca.logic.Library;
+
 public class ReturnBook extends MenuItem {
     public ReturnBook(String description) {
         this.description = description;

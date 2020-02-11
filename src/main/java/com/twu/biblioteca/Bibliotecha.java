@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.logic.Library;
+
 public class Bibliotecha {
     private Library library;
     private Menu menu;
@@ -46,5 +48,12 @@ public class Bibliotecha {
 
     public void quit() {
         System.exit(0);
+    }
+
+    public String checkOutBook() {
+        if (!library.containsBook(bookNameByUser) && library.containsCheckoutBook(bookNameByUser))
+            return Message.SUCCESSFUL_CHECKOUT;
+        else
+            return Message.UNSUCCESSFUL_CHECKOUT;
     }
 }
