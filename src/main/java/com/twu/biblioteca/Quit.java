@@ -7,6 +7,6 @@ public class Quit extends MenuItem {
 
     @Override
     public void action(Library library, Bibliotecha bibliotecha) {
-
+        bibliotecha.quit();
     }
 }

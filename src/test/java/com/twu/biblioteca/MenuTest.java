@@ -99,4 +99,26 @@ class MenuTest {
 
     }
 
+
+    @Test
+    public void shouldExitFromMenu() {
+        List<MenuItem> menuItems = new ArrayList<>();
+        MenuItem returnBook = mock(ReturnBook.class);
+        MenuItem viewBook = mock(ViewBooks.class);
+        MenuItem checkOut = mock(CheckOut.class);
+        MenuItem quit = mock(Quit.class);
+        menuItems.add(returnBook);
+        menuItems.add(viewBook);
+        menuItems.add(checkOut);
+        menuItems.add(quit);
+        Menu menu = new Menu(menuItems);
+        Library library = mock(Library.class);
+        Bibliotecha bibliotecha = mock(Bibliotecha.class);
+
+        menu.select(4, library, bibliotecha);
+
+        verify(checkOut, times(1)).action(library, bibliotecha);
+
+    }
+
 }

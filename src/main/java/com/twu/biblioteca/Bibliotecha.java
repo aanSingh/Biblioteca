@@ -38,4 +38,8 @@ public class Bibliotecha {
     public String getBooks(){
         return this.bookList;
     }
+
+    public void quit() {
+        System.exit(0);
+    }
 }
