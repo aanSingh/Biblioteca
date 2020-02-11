@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.exceptions.InvalidBookException;
+
 import java.util.Scanner;
 
 public class BiblotecaApp {
@@ -9,7 +11,7 @@ public class BiblotecaApp {
         bibliotecha = new Bibliotecha();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidBookException {
         BiblotecaApp biblotecaApp = new BiblotecaApp();
 
         biblotecaApp.message();
@@ -20,7 +22,7 @@ public class BiblotecaApp {
         System.out.println(bibliotecha.welcomeMessage());
     }
 
-    private void getChoice() {
+    private void getChoice() throws InvalidBookException {
         System.out.println("Enter your choice : ");
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
@@ -38,7 +40,7 @@ public class BiblotecaApp {
 
     }
 
-    private void menu() {
+    private void menu() throws InvalidBookException {
         while (true) {
             String menu = bibliotecha.displayMenu();
             System.out.println(menu);

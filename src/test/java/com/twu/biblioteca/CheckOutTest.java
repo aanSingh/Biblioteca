@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Library;
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +8,7 @@ import static org.mockito.Mockito.*;
 
 class CheckOutTest {
     @Test
-    public void shouldCheckOutABook() {
+    public void shouldCheckOutABook() throws InvalidBookException {
         Library libraryMock = mock(Library.class);
 
         MenuItem checkOut = new CheckOut("Check Out");

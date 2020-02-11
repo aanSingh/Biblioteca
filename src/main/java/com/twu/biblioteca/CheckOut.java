@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Book;
 import com.twu.biblioteca.logic.Library;
 
@@ -9,7 +10,7 @@ public class CheckOut extends MenuItem {
     }
 
     @Override
-    public void action(Library library, Bibliotecha bibloteca) {
+    public void action(Library library, Bibliotecha bibloteca) throws InvalidBookException {
         String bookName = bibloteca.getBookName();
         library.checkoutBook(bookName);
         String books = "";

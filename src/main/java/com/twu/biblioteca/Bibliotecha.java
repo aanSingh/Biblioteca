@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Library;
 
 public class Bibliotecha {
@@ -26,7 +27,7 @@ public class Bibliotecha {
         return menu.display();
     }
 
-    public void execute(int choice) {
+    public void execute(int choice) throws InvalidBookException {
         menu.select(choice, library, this);
     }
 

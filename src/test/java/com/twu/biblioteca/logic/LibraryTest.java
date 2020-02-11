@@ -1,7 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.logic;
 
-import com.twu.biblioteca.logic.Book;
-import com.twu.biblioteca.logic.Library;
+import com.twu.biblioteca.exceptions.InvalidBookException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -43,7 +42,7 @@ class LibraryTest {
     }
 
     @Test
-    public void shouldLetCustomerCheckoutOneBook() {
+    public void shouldLetCustomerCheckoutOneBook() throws InvalidBookException {
         List<Book> books;
         books = new ArrayList<>();
         Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
@@ -61,7 +60,22 @@ class LibraryTest {
     }
 
     @Test
-    public void shouldLetCustomerReturnOneBook() {
+    public void shouldThrowExceptionCustomerWhenCustomerWriteInvalidName() throws InvalidBookException {
+        List<Book> books;
+        books = new ArrayList<>();
+        Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
+        Book book2 = new Book("The Lord of the Rings Trilogy", "J.R.R. Tolkien", 1996);
+        books.add(book1);
+        books.add(book2);
+        Library library = new Library(books);
+        String book = "The Harry Potter seriesdd";
+
+        assertThrows(InvalidBookException.class, () -> library.checkoutBook(book));
+
+    }
+
+    @Test
+    public void shouldLetCustomerReturnOneBook() throws InvalidBookException {
         List<Book> books;
         books = new ArrayList<>();
         Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
@@ -79,7 +93,7 @@ class LibraryTest {
     }
 
     @Test
-    public void shouldDisplaySuccessfulCheckoutMessageWhenCustomerCheckoutOneBook() {
+    public void shouldDisplaySuccessfulCheckoutMessageWhenCustomerCheckoutOneBook() throws InvalidBookException {
         List<Book> books;
         books = new ArrayList<>();
         Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);

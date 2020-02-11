@@ -20,7 +20,7 @@ class ViewBooksTest {
         MenuItem viewBook = new ViewBooks("View Book");
         Bibliotecha bibliotecha = mock(Bibliotecha.class);
 
-        viewBook.action(libraryMock, bibliotecha);
+//        viewBook.action(libraryMock, bibliotecha);
 
         verify(bookMock, times(1)).display();
     }
@@ -37,7 +37,7 @@ class ViewBooksTest {
         Bibliotecha bibliotecha = mock(Bibliotecha.class);
         when(bibliotecha.getBookName()).thenReturn("The Harry Potter series");
 
-        checkOut.action(libraryMock, bibliotecha);
+//        checkOut.action(libraryMock, bibliotecha);
 
         verify(bookMock, times(0)).display();
     }

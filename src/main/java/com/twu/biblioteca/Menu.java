@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Library;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class Menu {
         return menu.toString();
     }
 
-    public void select(int i, Library library, Bibliotecha bibliotecha) {
+    public void select(int i, Library library, Bibliotecha bibliotecha) throws InvalidBookException {
         menuItem.get(i - 1).action(library, bibliotecha);
     }
 }

@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Library;
 import org.junit.jupiter.api.Test;
 
@@ -48,7 +49,7 @@ class MenuTest {
     }
 
     @Test
-    public void shouldViewListOfBooksWhenOptionOneIsSelected() {
+    public void shouldViewListOfBooksWhenOptionOneIsSelected() throws InvalidBookException {
         List<MenuItem> menuItems = new ArrayList<>();
         MenuItem viewBooks = mock(ViewBooks.class);
         menuItems.add(viewBooks);
@@ -63,7 +64,7 @@ class MenuTest {
     }
 
     @Test
-    public void shouldCheckOutBookWhenOptionTwoIsSelected() {
+    public void shouldCheckOutBookWhenOptionTwoIsSelected() throws InvalidBookException {
         List<MenuItem> menuItems = new ArrayList<>();
         MenuItem viewBook = mock(ViewBooks.class);
         MenuItem checkOut = mock(CheckOut.class);
@@ -81,7 +82,7 @@ class MenuTest {
 
 
     @Test
-    public void shouldReturnBookWhenOptionThreeIsSelected() {
+    public void shouldReturnBookWhenOptionThreeIsSelected() throws InvalidBookException {
         List<MenuItem> menuItems = new ArrayList<>();
         MenuItem returnBook = mock(ReturnBook.class);
         MenuItem viewBook = mock(ViewBooks.class);
@@ -101,7 +102,7 @@ class MenuTest {
 
 
     @Test
-    public void shouldExitFromMenu() {
+    public void shouldExitFromMenu() throws InvalidBookException {
         List<MenuItem> menuItems = new ArrayList<>();
         MenuItem returnBook = mock(ReturnBook.class);
         MenuItem viewBook = mock(ViewBooks.class);

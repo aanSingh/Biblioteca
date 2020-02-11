@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Library;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +29,7 @@ class BibliotechaTest {
     }
 
     @Test
-    public void shouldExecuteOptionOne() {
+    public void shouldExecuteOptionOne() throws InvalidBookException {
         Menu menu = mock(Menu.class);
         Library library = mock(Library.class);
         Bibliotecha bibliotecha = new Bibliotecha(library, menu);
@@ -40,7 +41,7 @@ class BibliotechaTest {
     }
 
     @Test
-    public void shouldExecuteOptionTwo() {
+    public void shouldExecuteOptionTwo() throws InvalidBookException {
         Menu menu = mock(Menu.class);
         Library library = mock(Library.class);
         Bibliotecha bibliotecha = new Bibliotecha(library, menu);

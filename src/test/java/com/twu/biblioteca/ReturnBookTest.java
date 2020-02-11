@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Library;
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +9,7 @@ import static org.mockito.Mockito.times;
 
 class ReturnBookTest {
     @Test
-    public void shouldReturnABook() {
+    public void shouldReturnABook() throws InvalidBookException {
         Library libraryMock = mock(Library.class);
 
         MenuItem returnBook = new ReturnBook("Return Book");
