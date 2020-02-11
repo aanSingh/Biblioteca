@@ -11,6 +11,11 @@ public class Bibliotecha {
         menu = new Menu();
     }
 
+    Bibliotecha(Library library, Menu menu){
+        this.library = library;
+        this.menu = menu;
+    }
+
     public String welcomeMessage() {
         return Message.WELCOME;
     }
@@ -35,19 +40,11 @@ public class Bibliotecha {
         this.bookList = bookList;
     }
 
-    public String getBooks(){
+    public String getBooks() {
         return this.bookList;
     }
 
     public void quit() {
         System.exit(0);
     }
-
-    public String checkOutBook() {
-        if (library.containsCheckoutBook(bookNameByUser) & !library.containsBook(bookNameByUser))
-            return Message.SUCCESSFUL_CHECKOUT;
-        else
-            return Message.UNSUCCESSFUL_CHECKOUT;
-    }
-
 }

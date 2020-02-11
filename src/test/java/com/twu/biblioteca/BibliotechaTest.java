@@ -1,10 +1,10 @@
 package com.twu.biblioteca;
 
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
+import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class BibliotechaTest {
     @Test
@@ -25,6 +25,18 @@ class BibliotechaTest {
         String expectedMenu = bibliotecha.displayMenu();
 
         assertTrue(actualMenu.equals(expectedMenu));
+    }
+
+    @Test
+    public void shouldExecuteOptionOne() {
+        Menu menu = mock(Menu.class);
+        Library library = mock(Library.class);
+        Bibliotecha bibliotecha = new Bibliotecha(library, menu);
+
+        bibliotecha.execute(1);
+
+        verify(menu, times(1)).select(1, library, bibliotecha);
+
     }
 
 }
