@@ -117,7 +117,7 @@ class MenuTest {
 
         menu.select(4, library, bibliotecha);
 
-        verify(checkOut, times(1)).action(library, bibliotecha);
+        verify(quit, times(1)).action(library, bibliotecha);
 
     }
 
