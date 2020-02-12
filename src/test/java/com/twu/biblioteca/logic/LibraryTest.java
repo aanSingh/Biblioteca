@@ -122,7 +122,7 @@ class LibraryTest {
         Library library = new Library(null, movies);
         String movieName = "A Nightmare on Elm Street";
 
-        Movie actualMovie = library.findMovieByName(movieName);
+        Movie actualMovie = library.findMovieByName(movieName, movies);
 
         assertEquals(movie1, actualMovie);
     }
@@ -139,7 +139,7 @@ class LibraryTest {
         Library library = new Library(null, movies);
         String movieName = "A Nightmare on Elm";
 
-        assertThrows(InvalidMovieException.class, () -> library.findMovieByName(movieName));
+        assertThrows(InvalidMovieException.class, () -> library.findMovieByName(movieName, movies));
     }
 
     @Test
@@ -154,7 +154,7 @@ class LibraryTest {
         Library library = new Library(null, movies);
         String movieName = "A Nightmare on Elm Street";
 
-        assertDoesNotThrow(() -> library.findMovieByName(movieName));
+        assertDoesNotThrow(() -> library.findMovieByName(movieName, movies));
     }
 
     @Test
@@ -170,7 +170,23 @@ class LibraryTest {
         String movieName = "A Nightmare on Elm Street";
 
         assertDoesNotThrow(() -> library.checkoutMovie(movieName));
+    }
 
+    @Test
+    public void shouldNotThrowExceptionWhenMovieReturnedSuccessfully() throws InvalidMovieException {
+        Movie movie1 = new Movie("A Nightmare on Elm Street", 1984, "Wes Craven", 8);
+        Movie movie2 = new Movie("The Shawshank Redemption", 1994, " Frank Darabont", 9);
+        Movie movie3 = new Movie("The Godfather", 1972, "Francis Ford Coppola", 9);
+        List<Movie> movies = new ArrayList<>();
+        movies.add(movie1);
+        movies.add(movie2);
+        movies.add(movie3);
+        Library library = new Library(null, movies);
+        String movieName = "A Nightmare on Elm Street";
+
+        library.checkoutMovie(movieName);
+
+        assertDoesNotThrow(() -> library.returnMovie(movieName));
     }
 
 }

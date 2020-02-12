@@ -10,12 +10,15 @@ public class Library {
     private List<Movie> movies;
     private List<Book> books;
     private List<Book> checkoutBooks;
+    private List<Movie> checkoutMovies;
 
     public Library(List<Book> books, List<Movie> movies) {
         this.books = new ArrayList<>();
-        this.movies = new ArrayList<>();
         this.checkoutBooks = new ArrayList<>();
         this.books = books;
+
+        this.movies = new ArrayList<>();
+        this.checkoutMovies = new ArrayList<>();
         this.movies = movies;
     }
 
@@ -48,8 +51,8 @@ public class Library {
         throw new InvalidBookException();
     }
 
-    public Movie findMovieByName(String movieName) throws InvalidMovieException {
-        for (Movie movie : movies) {
+    public Movie findMovieByName(String movieName, List<Movie> movieList) throws InvalidMovieException {
+        for (Movie movie : movieList) {
             if (movie.getName().equals(movieName)) {
                 return movie;
             }
@@ -58,7 +61,14 @@ public class Library {
     }
 
     public void checkoutMovie(String movieName) throws InvalidMovieException {
-        Movie movie = findMovieByName(movieName);
+        Movie movie = findMovieByName(movieName, movies);
         movies.remove(movie);
+        checkoutMovies.add(movie);
+    }
+
+    public void returnMovie(String movieName) throws InvalidMovieException {
+        Movie movie = findMovieByName(movieName, checkoutMovies);
+        checkoutMovies.remove(movie);
+        movies.add(movie);
     }
 }
