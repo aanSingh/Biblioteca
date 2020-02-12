@@ -33,7 +33,7 @@ public class BiblotecaApp implements Bibloteca {
         MenuItem returnBook = new ReturnBook();
         MenuItem viewMovies = new ViewMovies();
         MenuItem checkOutMovie = new CheckOutMovie();
-
+        MenuItem returnMovie = new ReturnMovie();
         MenuItem quit = new Quit();
 
         List<MenuItem> menuItems = new ArrayList<>();
@@ -42,6 +42,7 @@ public class BiblotecaApp implements Bibloteca {
         menuItems.add(returnBook);
         menuItems.add(viewMovies);
         menuItems.add(checkOutMovie);
+        menuItems.add(returnMovie);
         menuItems.add(quit);
 
         menu = new Menu(menuItems);
