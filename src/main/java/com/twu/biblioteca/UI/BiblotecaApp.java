@@ -32,6 +32,8 @@ public class BiblotecaApp implements Bibloteca {
         MenuItem checkOutBook = new CheckOutBook();
         MenuItem returnBook = new ReturnBook();
         MenuItem viewMovies = new ViewMovies();
+        MenuItem checkOutMovie = new CheckOutMovie();
+
         MenuItem quit = new Quit();
 
         List<MenuItem> menuItems = new ArrayList<>();
@@ -39,6 +41,7 @@ public class BiblotecaApp implements Bibloteca {
         menuItems.add(checkOutBook);
         menuItems.add(returnBook);
         menuItems.add(viewMovies);
+        menuItems.add(checkOutMovie);
         menuItems.add(quit);
 
         menu = new Menu(menuItems);
@@ -119,7 +122,7 @@ public class BiblotecaApp implements Bibloteca {
     @Override
     public String getMovieTitle() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println(Message.ENTER_BOOK_TITLE);
+        System.out.println(Message.ENTER_MOVIE_TITLE);
         return scanner.nextLine();
     }
 }

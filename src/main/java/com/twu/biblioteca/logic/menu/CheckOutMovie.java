@@ -22,6 +22,6 @@ public class CheckOutMovie implements MenuItem {
 
     @Override
     public String description() {
-        return "Checkout movie";
+        return "Checkout Movie";
     }
 }

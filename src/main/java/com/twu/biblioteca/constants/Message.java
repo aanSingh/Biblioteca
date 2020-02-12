@@ -15,5 +15,5 @@ public class Message {
     public static final String MOVIE_LIST = "\t\t\t----------Movie List----------\n";
     public static final String SUCCESSFUL_CHECKOUT_MOVIE = "Thank you! Enjoy the movie";
     public static final String UNSUCCESSFUL_CHECKOUT_MOVIE = "That is not a valid book to return";
-
+    public static final String ENTER_MOVIE_TITLE = "Enter the movie title : ";
 }

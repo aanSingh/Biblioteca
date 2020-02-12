@@ -5,7 +5,6 @@ import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Library;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,8 @@ class MenuTest {
         MenuItem menuItem3 = new ReturnBook();
         MenuItem menuItem4 = new ViewMovies();
         MenuItem menuItem5 = new CheckOutMovie();
-        MenuItem menuItem6 = new Quit();
+        MenuItem menuItem6 = new ReturnMovie();
+        MenuItem menuItem7 = new Quit();
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(menuItem1);
         menuItems.add(menuItem2);
@@ -28,6 +28,8 @@ class MenuTest {
         menuItems.add(menuItem4);
         menuItems.add(menuItem5);
         menuItems.add(menuItem6);
+        menuItems.add(menuItem7);
+
         Menu menu = new Menu(menuItems);
 
         String actualMenu = menu.display();
@@ -37,7 +39,8 @@ class MenuTest {
                 "\t3. Return book\n" +
                 "\t4. View Movies\n" +
                 "\t5. Checkout Movie\n" +
-                "\t6. Quit\n";
+                "\t6. Return Movie\n" +
+                "\t7. Quit\n";
         assertEquals(expectedMenu, actualMenu);
 
     }
@@ -136,6 +139,31 @@ class MenuTest {
         menu.select(4, library, biblotecaApp);
 
         verify(viewMovies, times(1)).action(library, biblotecaApp);
+
+    }
+
+    @Test
+    public void shouldCheckoutMovieWhenOptionFiveIsSelected() throws InvalidBookException {
+        List<MenuItem> menuItems = new ArrayList<>();
+        MenuItem returnBook = mock(ReturnBook.class);
+        MenuItem viewBook = mock(ViewBooks.class);
+        MenuItem checkOut = mock(CheckOutBook.class);
+        MenuItem viewMovies = mock(ViewMovies.class);
+        MenuItem checkoutMovie = mock(ViewMovies.class);
+        MenuItem quit = mock(Quit.class);
+        menuItems.add(returnBook);
+        menuItems.add(viewBook);
+        menuItems.add(checkOut);
+        menuItems.add(viewMovies);
+        menuItems.add(checkoutMovie);
+        menuItems.add(quit);
+        Menu menu = new Menu(menuItems);
+        Library library = mock(Library.class);
+        BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
+
+        menu.select(5, library, biblotecaApp);
+
+        verify(checkoutMovie, times(1)).action(library, biblotecaApp);
 
     }
 }
