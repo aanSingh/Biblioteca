@@ -10,7 +10,7 @@ import static org.mockito.Mockito.*;
 
 class CheckOutBookTest {
     @Test
-    public void shouldReturnDescriptionForCheckoutOption() throws InvalidBookException {
+    public void shouldReturnDescriptionForCheckoutOption() {
         MenuItem menuItem = new CheckOutBook();
         String expectedQuitDescription = "Checkout book";
 

@@ -22,10 +22,10 @@ class ViewMoviesTest {
     @Test
     public void shouldViewAllMovies() throws InvalidBookException {
         Library libraryMock = mock(Library.class);
-        MenuItem viewBooks = new ViewMovies();
+        MenuItem viewMovies = new ViewMovies();
         BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
 
-        viewBooks.action(libraryMock, biblotecaApp);
+        viewMovies.action(libraryMock, biblotecaApp);
 
         verify(libraryMock, times(1)).movies();
 

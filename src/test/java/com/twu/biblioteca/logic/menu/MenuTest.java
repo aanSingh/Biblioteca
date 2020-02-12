@@ -19,13 +19,15 @@ class MenuTest {
         MenuItem menuItem2 = new CheckOutBook();
         MenuItem menuItem3 = new ReturnBook();
         MenuItem menuItem4 = new ViewMovies();
-        MenuItem menuItem5 = new Quit();
+        MenuItem menuItem5 = new CheckOutMovie();
+        MenuItem menuItem6 = new Quit();
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(menuItem1);
         menuItems.add(menuItem2);
         menuItems.add(menuItem3);
         menuItems.add(menuItem4);
         menuItems.add(menuItem5);
+        menuItems.add(menuItem6);
         Menu menu = new Menu(menuItems);
 
         String actualMenu = menu.display();
@@ -34,7 +36,8 @@ class MenuTest {
                 "\t2. Checkout book\n" +
                 "\t3. Return book\n" +
                 "\t4. View Movies\n" +
-                "\t5. Quit\n";
+                "\t5. Checkout Movie\n" +
+                "\t6. Quit\n";
         assertEquals(expectedMenu, actualMenu);
 
     }
