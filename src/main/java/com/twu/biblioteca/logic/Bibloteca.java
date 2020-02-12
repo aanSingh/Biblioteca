@@ -15,4 +15,6 @@ public interface Bibloteca {
     String getFormat();
 
     void quitApp();
+
+    void displayMovieList(String movieList);
 }

@@ -12,4 +12,5 @@ public class Message {
     public static final String LIBRARY_NAME = "\tBiblotecha Library\n";
     public static final String BOOK_LIST = "\t\t\t----------Book List----------\n";
     public static final String EMPTY_LIBRARY = "Library is empty";
+    public static final String MOVIE_LIST = "\t\t\t----------Movie List----------\n";
 }

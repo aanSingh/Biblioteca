@@ -5,6 +5,7 @@ import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Book;
 import com.twu.biblioteca.logic.Library;
 import com.twu.biblioteca.logic.Bibloteca;
+import com.twu.biblioteca.logic.Movie;
 import com.twu.biblioteca.logic.menu.*;
 
 import java.util.ArrayList;
@@ -30,12 +31,14 @@ public class BiblotecaApp implements Bibloteca {
         MenuItem viewBook = new ViewBooks();
         MenuItem checkOutBook = new CheckOutBook();
         MenuItem returnBook = new ReturnBook();
+        MenuItem viewMovies = new ViewMovies();
         MenuItem quit = new Quit();
 
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(viewBook);
         menuItems.add(checkOutBook);
         menuItems.add(returnBook);
+        menuItems.add(viewMovies);
         menuItems.add(quit);
 
         menu = new Menu(menuItems);
@@ -47,7 +50,15 @@ public class BiblotecaApp implements Bibloteca {
         books.add(book1);
         books.add(book2);
 
-        library = new Library(books, null);
+        Movie movie1 = new Movie("A Nightmare on Elm Street", 1984, "Wes Craven", 8);
+        Movie movie2 = new Movie("The Shawshank Redemption", 1994, " Frank Darabont", 9);
+        Movie movie3 = new Movie("The Godfather", 1972, "Francis Ford Coppola", 9);
+        List<Movie> movies = new ArrayList<>();
+        movies.add(movie1);
+        movies.add(movie2);
+        movies.add(movie3);
+
+        library = new Library(books, movies);
     }
 
     private void getChoice() throws InvalidBookException {
@@ -98,5 +109,10 @@ public class BiblotecaApp implements Bibloteca {
     @Override
     public void quitApp() {
         System.exit(0);
+    }
+
+    @Override
+    public void displayMovieList(String movieList) {
+        System.out.println(movieList);
     }
 }
