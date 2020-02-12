@@ -81,5 +81,14 @@ class LibraryTest {
         assertThrows(InvalidBookException.class, () -> library.returnBook(bookReturn));
     }
 
+    @Test
+    public void shouldReturnMovie() {
+        Movie movie = new Movie("A Nightmare on Elm Street", 1984, "Wes Craven", 8);
+        Library library = new Library(movie);
+
+        Movie actualMovie = library.movies();
+
+        assertEquals(movie, actualMovie);
+    }
 
 }
