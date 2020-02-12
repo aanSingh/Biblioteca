@@ -40,7 +40,7 @@ class MenuTest {
     }
 
     @Test
-    public void shouldViewListOfBooksWhenOptionOneIsSelected() throws InvalidBookException, IOException {
+    public void shouldViewListOfBooksWhenOptionOneIsSelected() throws InvalidBookException {
         List<MenuItem> menuItems = new ArrayList<>();
         MenuItem viewBooks = mock(ViewBooks.class);
         menuItems.add(viewBooks);
@@ -55,7 +55,7 @@ class MenuTest {
     }
 
     @Test
-    public void shouldCheckOutBookWhenOptionTwoIsSelected() throws InvalidBookException, IOException {
+    public void shouldCheckOutBookWhenOptionTwoIsSelected() throws InvalidBookException {
         List<MenuItem> menuItems = new ArrayList<>();
         MenuItem viewBook = mock(ViewBooks.class);
         MenuItem checkOut = mock(CheckOutBook.class);
@@ -73,7 +73,7 @@ class MenuTest {
 
 
     @Test
-    public void shouldReturnBookWhenOptionThreeIsSelected() throws InvalidBookException, IOException {
+    public void shouldReturnBookWhenOptionThreeIsSelected() throws InvalidBookException {
         List<MenuItem> menuItems = new ArrayList<>();
         MenuItem returnBook = mock(ReturnBook.class);
         MenuItem viewBook = mock(ViewBooks.class);
@@ -93,7 +93,7 @@ class MenuTest {
 
 
     @Test
-    public void shouldExitFromMenu() throws InvalidBookException, IOException {
+    public void shouldExitFromMenu() throws InvalidBookException {
         List<MenuItem> menuItems = new ArrayList<>();
         MenuItem returnBook = mock(ReturnBook.class);
         MenuItem viewBook = mock(ViewBooks.class);
@@ -113,4 +113,26 @@ class MenuTest {
 
     }
 
+    @Test
+    public void shouldViewListOfMoviesWhenOptionFourIsSelected() throws InvalidBookException {
+        List<MenuItem> menuItems = new ArrayList<>();
+        MenuItem returnBook = mock(ReturnBook.class);
+        MenuItem viewBook = mock(ViewBooks.class);
+        MenuItem checkOut = mock(CheckOutBook.class);
+        MenuItem viewMovies = mock(ViewMovies.class);
+        MenuItem quit = mock(Quit.class);
+        menuItems.add(returnBook);
+        menuItems.add(viewBook);
+        menuItems.add(checkOut);
+        menuItems.add(viewMovies);
+        menuItems.add(quit);
+        Menu menu = new Menu(menuItems);
+        Library library = mock(Library.class);
+        BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
+
+        menu.select(4, library, biblotecaApp);
+
+        verify(viewMovies, times(1)).action(library, biblotecaApp);
+
+    }
 }

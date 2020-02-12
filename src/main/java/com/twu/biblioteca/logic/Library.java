@@ -42,6 +42,19 @@ public class Library {
         books.add(book);
     }
 
+
+    public void checkoutMovie(String movieName) throws InvalidMovieException {
+        Movie movie = findMovieByName(movieName, movies);
+        movies.remove(movie);
+        checkoutMovies.add(movie);
+    }
+
+    public void returnMovie(String movieName) throws InvalidMovieException {
+        Movie movie = findMovieByName(movieName, checkoutMovies);
+        checkoutMovies.remove(movie);
+        movies.add(movie);
+    }
+
     private Book findBookByTitle(String bookName, List<Book> bookList) throws InvalidBookException {
         for (Book book : bookList) {
             if (book.getName().equals(bookName)) {
@@ -58,17 +71,5 @@ public class Library {
             }
         }
         throw new InvalidMovieException();
-    }
-
-    public void checkoutMovie(String movieName) throws InvalidMovieException {
-        Movie movie = findMovieByName(movieName, movies);
-        movies.remove(movie);
-        checkoutMovies.add(movie);
-    }
-
-    public void returnMovie(String movieName) throws InvalidMovieException {
-        Movie movie = findMovieByName(movieName, checkoutMovies);
-        checkoutMovies.remove(movie);
-        movies.add(movie);
     }
 }
