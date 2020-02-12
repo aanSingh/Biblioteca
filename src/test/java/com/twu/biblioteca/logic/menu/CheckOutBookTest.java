@@ -29,8 +29,5 @@ class CheckOutBookTest {
 
         checkoutBook.action(libraryMock, biblotecaApp);
         verify(libraryMock, times(1)).checkoutBook("The Harry Potter series");
-
     }
-
-
 }

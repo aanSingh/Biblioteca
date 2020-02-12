@@ -17,4 +17,6 @@ public interface Bibloteca {
     void quitApp();
 
     void displayMovieList(String movieList);
+
+    String getMovieTitle();
 }

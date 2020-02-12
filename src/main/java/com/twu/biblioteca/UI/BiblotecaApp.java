@@ -115,4 +115,11 @@ public class BiblotecaApp implements Bibloteca {
     public void displayMovieList(String movieList) {
         System.out.println(movieList);
     }
+
+    @Override
+    public String getMovieTitle() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(Message.ENTER_BOOK_TITLE);
+        return scanner.nextLine();
+    }
 }
