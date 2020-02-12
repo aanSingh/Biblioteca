@@ -11,4 +11,5 @@ public class Message {
     public static final String ENTER_DISPLAY_FORMAT = "Enter the format in which you want to display";
     public static final String LIBRARY_NAME = "\tBiblotecha Library\n";
     public static final String BOOK_LIST = "\t\t\t----------Book List----------\n";
+    public static final String EMPTY_LIBRARY = "Library is empty";
 }

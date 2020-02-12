@@ -6,7 +6,7 @@ import com.twu.biblioteca.logic.Library;
 
 public interface MenuItem {
 
-    public abstract void action(Library library, BiblotecaApp biblotecaApp) throws InvalidBookException;
+    void action(Library library, BiblotecaApp biblotecaApp) throws InvalidBookException;
 
-    public abstract String description();
+    String description();
 }

@@ -21,7 +21,7 @@ public class BiblotecaApp implements Bibloteca {
     public static void main(String[] args) throws InvalidBookException {
         BiblotecaApp biblotecaApp = new BiblotecaApp();
 
-        biblotecaApp.message();
+        biblotecaApp.displayMessage(Message.WELCOME);
         biblotecaApp.init();
         biblotecaApp.menu();
     }
@@ -48,10 +48,6 @@ public class BiblotecaApp implements Bibloteca {
         books.add(book2);
 
         library = new Library(books);
-    }
-
-    private void message() {
-        System.out.println(Message.WELCOME);
     }
 
     private void getChoice() throws InvalidBookException {

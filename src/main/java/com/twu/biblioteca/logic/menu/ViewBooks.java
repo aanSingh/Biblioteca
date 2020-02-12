@@ -13,18 +13,18 @@ public class ViewBooks implements MenuItem {
     public void action(Library library, BiblotecaApp biblotecaApp) {
         String bookFormat = biblotecaApp.getFormat();
 
-        String bookList = Message.BOOK_LIST;
+        StringBuilder bookList = new StringBuilder(Message.BOOK_LIST);
         List<Book> books = library.books();
 
         if (books.size() == 0) {
-            biblotecaApp.displayMessage("Library is empty \n");
+            biblotecaApp.displayMessage(Message.EMPTY_LIBRARY);
         }
 
         for (Book book : books) {
-            bookList += book.display(bookFormat) + "\n";
+            bookList.append(book.display(bookFormat)).append("\n");
         }
 
-        biblotecaApp.displayBookList(bookList);
+        biblotecaApp.displayBookList(bookList.toString());
     }
 
     @Override
