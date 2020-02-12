@@ -1,6 +1,7 @@
 package com.twu.biblioteca.logic;
 
 import com.twu.biblioteca.exceptions.InvalidBookException;
+import com.twu.biblioteca.exceptions.InvalidMovieException;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -110,7 +111,7 @@ class LibraryTest {
     }
 
     @Test
-    public void shouldReturnMovieWhenMovieNameMatchesAnyMovieNameInMovieList() {
+    public void shouldReturnMovieWhenMovieNameMatchesAnyMovieNameInMovieList() throws InvalidMovieException {
         Movie movie1 = new Movie("A Nightmare on Elm Street", 1984, "Wes Craven", 8);
         Movie movie2 = new Movie("The Shawshank Redemption", 1994, " Frank Darabont", 9);
         Movie movie3 = new Movie("The Godfather", 1972, "Francis Ford Coppola", 9);
@@ -124,6 +125,21 @@ class LibraryTest {
         Movie actualMovie = library.findMovieByName(movieName);
 
         assertEquals(movie1, actualMovie);
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenMovieNameDoesNotMatchesAnyMovieNameInMovieList() {
+        Movie movie1 = new Movie("A Nightmare on Elm Street", 1984, "Wes Craven", 8);
+        Movie movie2 = new Movie("The Shawshank Redemption", 1994, " Frank Darabont", 9);
+        Movie movie3 = new Movie("The Godfather", 1972, "Francis Ford Coppola", 9);
+        List<Movie> movies = new ArrayList<>();
+        movies.add(movie1);
+        movies.add(movie2);
+        movies.add(movie3);
+        Library library = new Library(null, movies);
+        String movieName = "A Nightmare on Elm";
+
+        assertThrows(InvalidMovieException.class, () -> library.findMovieByName(movieName));
     }
 
 }

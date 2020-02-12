@@ -1,6 +1,7 @@
 package com.twu.biblioteca.logic;
 
 import com.twu.biblioteca.exceptions.InvalidBookException;
+import com.twu.biblioteca.exceptions.InvalidMovieException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,12 +49,12 @@ public class Library {
         throw new InvalidBookException();
     }
 
-    public Movie findMovieByName(String movieName) {
+    public Movie findMovieByName(String movieName) throws InvalidMovieException {
         for (Movie movie : movies) {
             if (movie.getName().equals(movieName)) {
                 return movie;
             }
         }
-        return null;
+        throw new InvalidMovieException();
     }
 }
