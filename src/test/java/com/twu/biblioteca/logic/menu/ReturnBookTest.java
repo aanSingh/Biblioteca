@@ -13,7 +13,7 @@ import static org.mockito.Mockito.times;
 
 class ReturnBookTest {
     @Test
-    public void shouldReturnDescriptionForReturnBookOption() throws InvalidBookException {
+    public void shouldReturnDescriptionForReturnBookOption() {
         MenuItem menuItem = new ReturnBook();
         String expectedQuitDescription = "Return book";
 
@@ -23,7 +23,7 @@ class ReturnBookTest {
     }
 
     @Test
-    public void shouldReturnABook() throws InvalidBookException, IOException {
+    public void shouldReturnABook() throws InvalidBookException {
         Library libraryMock = mock(Library.class);
         MenuItem returnBook = new ReturnBook();
         BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
