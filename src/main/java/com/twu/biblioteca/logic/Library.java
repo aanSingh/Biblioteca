@@ -6,22 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    private Movie movie;
+    private List<Movie> movies;
     private List<Book> books;
     private List<Book> checkoutBooks;
 
-    public Library(List<Book> books) {
+    public Library(List<Book> books, List<Movie> movies) {
         this.books = new ArrayList<>();
+        this.movies = new ArrayList<>();
         this.checkoutBooks = new ArrayList<>();
         this.books = books;
-    }
-
-    public Library(Movie movie) {
-        this.movie = movie;
+        this.movies = movies;
     }
 
     public List<Book> books() {
         return books;
+    }
+
+    public List<Movie> movies() {
+        return movies;
     }
 
     public void checkoutBook(String bookName) throws InvalidBookException {
@@ -46,7 +48,4 @@ public class Library {
         throw new InvalidBookException();
     }
 
-    public Movie movies() {
-        return movie;
-    }
 }

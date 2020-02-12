@@ -16,7 +16,7 @@ class LibraryTest {
         books = new ArrayList<>();
         Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
         books.add(book1);
-        Library library = new Library(books);
+        Library library = new Library(books, null);
 
         List<Book> actualBookList = library.books();
 
@@ -29,7 +29,7 @@ class LibraryTest {
         books = new ArrayList<>();
         Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
         books.add(book1);
-        Library library = new Library(books);
+        Library library = new Library(books, null);
         String book = "The Harry Potter series";
 
         assertDoesNotThrow(() -> library.checkoutBook(book));
@@ -42,7 +42,7 @@ class LibraryTest {
         books = new ArrayList<>();
         Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
         books.add(book1);
-        Library library = new Library(books);
+        Library library = new Library(books, null);
         String book = "The Harry Potter seriesss";
 
         assertThrows(InvalidBookException.class, () -> library.checkoutBook(book));
@@ -56,7 +56,7 @@ class LibraryTest {
         Book book2 = new Book("The Lord of the Rings Trilogy", "J.R.R. Tolkien", 1996);
         books.add(book1);
         books.add(book2);
-        Library library = new Library(books);
+        Library library = new Library(books, null);
         String book = "The Harry Potter series";
 
         library.checkoutBook(book);
@@ -72,7 +72,7 @@ class LibraryTest {
         Book book2 = new Book("The Lord of the Rings Trilogy", "J.R.R. Tolkien", 1996);
         books.add(book1);
         books.add(book2);
-        Library library = new Library(books);
+        Library library = new Library(books, null);
         String bookCheckOut = "The Harry Potter series";
         String bookReturn = "The Harry Potter seriess";
 
@@ -82,13 +82,31 @@ class LibraryTest {
     }
 
     @Test
-    public void shouldReturnMovie() {
-        Movie movie = new Movie("A Nightmare on Elm Street", 1984, "Wes Craven", 8);
-        Library library = new Library(movie);
+    public void shouldDisplayOneMovie() {
+        Movie movie1 = new Movie("A Nightmare on Elm Street", 1984, "Wes Craven", 8);
+        List<Movie> movies = new ArrayList<>();
+        movies.add(movie1);
+        Library library = new Library(null, movies);
 
-        Movie actualMovie = library.movies();
+        List<Movie> actualMovie = library.movies();
 
-        assertEquals(movie, actualMovie);
+        assertEquals(movies, actualMovie);
+    }
+
+    @Test
+    public void shouldDisplayListOfMovies() {
+        Movie movie1 = new Movie("A Nightmare on Elm Street", 1984, "Wes Craven", 8);
+        Movie movie2 = new Movie("The Shawshank Redemption", 1994, " Frank Darabont", 9);
+        Movie movie3 = new Movie("The Godfather", 1972, "Francis Ford Coppola", 9);
+        List<Movie> movies = new ArrayList<>();
+        movies.add(movie1);
+        movies.add(movie2);
+        movies.add(movie3);
+        Library library = new Library(null, movies);
+
+        List<Movie> actualMovie = library.movies();
+
+        assertEquals(movies, actualMovie);
     }
 
 }

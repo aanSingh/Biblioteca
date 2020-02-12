@@ -47,7 +47,7 @@ public class BiblotecaApp implements Bibloteca {
         books.add(book1);
         books.add(book2);
 
-        library = new Library(books);
+        library = new Library(books, null);
     }
 
     private void getChoice() throws InvalidBookException {
