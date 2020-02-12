@@ -31,7 +31,6 @@ public class Library {
         Book book = findBookByTitle(bookName, books);
         books.remove(book);
         checkoutBooks.add(book);
-
     }
 
     public void returnBook(String bookName) throws InvalidBookException {
@@ -56,5 +55,10 @@ public class Library {
             }
         }
         throw new InvalidMovieException();
+    }
+
+    public void checkoutMovie(String movieName) throws InvalidMovieException {
+        Movie movie = findMovieByName(movieName);
+        movies.remove(movie);
     }
 }
