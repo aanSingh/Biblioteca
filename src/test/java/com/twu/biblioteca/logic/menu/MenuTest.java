@@ -166,4 +166,31 @@ class MenuTest {
         verify(checkoutMovie, times(1)).action(library, biblotecaApp);
 
     }
+
+    @Test
+    public void shouldReturnMovieWhenOptionSixIsSelected() throws InvalidBookException {
+        List<MenuItem> menuItems = new ArrayList<>();
+        MenuItem returnBook = mock(ReturnBook.class);
+        MenuItem viewBook = mock(ViewBooks.class);
+        MenuItem checkOut = mock(CheckOutBook.class);
+        MenuItem viewMovies = mock(ViewMovies.class);
+        MenuItem checkoutMovie = mock(ViewMovies.class);
+        MenuItem returnMovie = mock(ViewMovies.class);
+        MenuItem quit = mock(Quit.class);
+        menuItems.add(returnBook);
+        menuItems.add(viewBook);
+        menuItems.add(checkOut);
+        menuItems.add(viewMovies);
+        menuItems.add(checkoutMovie);
+        menuItems.add(returnMovie);
+        menuItems.add(quit);
+        Menu menu = new Menu(menuItems);
+        Library library = mock(Library.class);
+        BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
+
+        menu.select(6, library, biblotecaApp);
+
+        verify(returnMovie, times(1)).action(library, biblotecaApp);
+
+    }
 }
