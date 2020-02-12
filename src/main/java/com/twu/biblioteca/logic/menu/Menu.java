@@ -1,6 +1,7 @@
 package com.twu.biblioteca.logic.menu;
 
 import com.twu.biblioteca.UI.BiblotecaApp;
+import com.twu.biblioteca.constants.Message;
 import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Library;
 
@@ -16,7 +17,7 @@ public class Menu {
     }
 
     public String display() {
-        StringBuilder menu = new StringBuilder("\tBiblotecha Library\n");
+        StringBuilder menu = new StringBuilder(Message.LIBRARY_NAME);
 
         for (int index = 0; index < menuItem.size(); index++)
             menu.append("\t").append(index + 1).append(". ").append(menuItem.get(index).description()).append("\n");

@@ -1,6 +1,7 @@
 package com.twu.biblioteca.logic.menu;
 
 import com.twu.biblioteca.UI.BiblotecaApp;
+import com.twu.biblioteca.constants.Message;
 import com.twu.biblioteca.logic.Book;
 import com.twu.biblioteca.logic.Library;
 
@@ -10,7 +11,9 @@ public class ViewBooks extends MenuItem {
 
     @Override
     public void action(Library library, BiblotecaApp biblotecaApp) {
-        String bookList = "";
+        String bookFormat = biblotecaApp.getFormat();
+
+        String bookList = Message.BOOK_LIST;
         List<Book> books = library.books();
 
         if (books.size() == 0) {
@@ -18,7 +21,7 @@ public class ViewBooks extends MenuItem {
         }
 
         for (Book book : books) {
-            bookList += book.display();
+            bookList += book.display(bookFormat) + "\n";
         }
 
         biblotecaApp.displayBookList(bookList);

@@ -1,15 +1,12 @@
 package com.twu.biblioteca.logic.menu;
 
+import com.twu.biblioteca.UI.BiblotecaApp;
 import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Library;
-import com.twu.biblioteca.logic.menu.MenuItem;
-import com.twu.biblioteca.logic.menu.ReturnBook;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
@@ -29,12 +26,11 @@ class ReturnBookTest {
     public void shouldReturnABook() throws InvalidBookException, IOException {
         Library libraryMock = mock(Library.class);
         MenuItem returnBook = new ReturnBook();
-        BufferedReader bufferedReader = mock(BufferedReader.class);
-        PrintWriter printWriter = mock(PrintWriter.class);
-        when(bufferedReader.readLine()).thenReturn("The Harry Potter series");
+        BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
 
-        returnBook.action(libraryMock, bufferedReader, printWriter);
+        when(biblotecaApp.getBookTitle()).thenReturn("The Harry Potter series");
 
+        returnBook.action(libraryMock, biblotecaApp);
         verify(libraryMock, times(1)).returnBook("The Harry Potter series");
 
     }

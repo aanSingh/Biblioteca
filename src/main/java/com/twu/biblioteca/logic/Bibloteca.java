@@ -11,4 +11,6 @@ public interface Bibloteca {
     void displayMessage(String message);
 
     void displayBookList(String bookList);
+
+    String getFormat();
 }

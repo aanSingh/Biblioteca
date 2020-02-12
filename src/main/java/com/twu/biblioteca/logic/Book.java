@@ -32,8 +32,8 @@ public class Book {
         return name;
     }
 
-    public String display() {
-        return String.format("%-40s||%-40s||%-40s\n", name, author, publicationYear);
+    public String display(String format) {
+        return String.format(format, name, author, publicationYear);
     }
 
 }

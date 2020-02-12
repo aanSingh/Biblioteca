@@ -9,9 +9,6 @@ public class Library {
     private List<Book> books;
     private List<Book> checkoutBooks;
 
-    public Library() {
-    }
-
     public Library(List<Book> books) {
         this.books = new ArrayList<>();
         this.checkoutBooks = new ArrayList<>();

@@ -1,4 +1,4 @@
-package com.twu.biblioteca.UI;
+package com.twu.biblioteca.constants;
 
 public class Message {
     public static final String WELCOME = "Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore";
@@ -8,4 +8,7 @@ public class Message {
     public static final String UNSUCCESSFUL_RETURN = "That is not a valid book to return.";
     public static final String ENTER_OPTION = "Enter your choice : ";
     public static final String ENTER_BOOK_TITLE = "Enter the book title : ";
+    public static final String ENTER_DISPLAY_FORMAT = "Enter the format in which you want to display";
+    public static final String LIBRARY_NAME = "\tBiblotecha Library\n";
+    public static final String BOOK_LIST = "\t\t\t----------Book List----------\n";
 }

@@ -1,5 +1,6 @@
 package com.twu.biblioteca.UI;
 
+import com.twu.biblioteca.constants.Message;
 import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Book;
 import com.twu.biblioteca.logic.Library;
@@ -15,7 +16,6 @@ public class BiblotecaApp implements Bibloteca {
     Library library;
 
     BiblotecaApp() {
-        library = new Library();
     }
 
     public static void main(String[] args) throws InvalidBookException {
@@ -90,5 +90,12 @@ public class BiblotecaApp implements Bibloteca {
     @Override
     public void displayBookList(String bookList) {
         System.out.println(bookList);
+    }
+
+    @Override
+    public String getFormat() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(Message.ENTER_DISPLAY_FORMAT);
+        return scanner.nextLine();
     }
 }
