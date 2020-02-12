@@ -48,4 +48,12 @@ public class Library {
         throw new InvalidBookException();
     }
 
+    public Movie findMovieByName(String movieName) {
+        for (Movie movie : movies) {
+            if (movie.getName().equals(movieName)) {
+                return movie;
+            }
+        }
+        return null;
+    }
 }

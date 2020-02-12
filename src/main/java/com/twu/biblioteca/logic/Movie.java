@@ -13,4 +13,8 @@ public class Movie {
         this.director = director;
         this.rating = rating;
     }
+
+    public String getName() {
+        return name;
+    }
 }

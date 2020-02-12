@@ -35,5 +35,4 @@ public class Book {
     public String display(String format) {
         return String.format(format, name, author, publicationYear);
     }
-
 }

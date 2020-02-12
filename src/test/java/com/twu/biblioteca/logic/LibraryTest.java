@@ -109,4 +109,21 @@ class LibraryTest {
         assertEquals(movies, actualMovie);
     }
 
+    @Test
+    public void shouldReturnMovieWhenMovieNameMatchesAnyMovieNameInMovieList() {
+        Movie movie1 = new Movie("A Nightmare on Elm Street", 1984, "Wes Craven", 8);
+        Movie movie2 = new Movie("The Shawshank Redemption", 1994, " Frank Darabont", 9);
+        Movie movie3 = new Movie("The Godfather", 1972, "Francis Ford Coppola", 9);
+        List<Movie> movies = new ArrayList<>();
+        movies.add(movie1);
+        movies.add(movie2);
+        movies.add(movie3);
+        Library library = new Library(null, movies);
+        String movieName = "A Nightmare on Elm Street";
+
+        Movie actualMovie = library.findMovieByName(movieName);
+
+        assertEquals(movie1, actualMovie);
+    }
+
 }
