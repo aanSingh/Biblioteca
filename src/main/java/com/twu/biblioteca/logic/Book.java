@@ -33,7 +33,7 @@ public class Book {
     }
 
     public String display() {
-        return name + "\t\t" + author + "\t\t" + publicationYear + "\n";
+        return String.format("%-40s||%-40s||%-40s\n", name, author, publicationYear);
     }
 
 }

@@ -20,4 +20,14 @@ class BookTest {
 
         assertNotEquals(book1, book2);
     }
+
+    @Test
+    void shouldDisplayBookDetails() {
+        Book book1 = new Book("abc", "huhu1", 1234);
+        String expectedBookDetails = "abc\t\thuhu1\t\t1234\n";
+        String actualBookDetails = book1.display();
+
+        assertEquals(expectedBookDetails, actualBookDetails);
+
+    }
 }

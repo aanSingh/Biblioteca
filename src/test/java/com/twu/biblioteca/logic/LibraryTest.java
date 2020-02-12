@@ -11,89 +11,45 @@ import static org.junit.jupiter.api.Assertions.*;
 class LibraryTest {
 
     @Test
-    public void shouldReturnOneBook() {
+    public void shouldReturnListOfBooks() {
         List<Book> books;
         books = new ArrayList<>();
         Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
         books.add(book1);
         Library library = new Library(books);
-//        library.displayBooks();
 
-//        List<Book> actualBooks = library.displayBooks();
+        List<Book> actualBookList = library.books();
 
-//        assertEquals(actualBooks, books);
+        assertEquals(actualBookList, books);
     }
 
     @Test
-    public void shouldReturnAllBooks() {
+    public void shouldNotThrowExceptionWhenBookCheckOutSuccessfully() {
         List<Book> books;
         books = new ArrayList<>();
         Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
-        Book book2 = new Book("The Lord of the Rings Trilogy", "J.R.R. Tolkien", 1996);
         books.add(book1);
-        books.add(book2);
-        Library library = new Library(books);
-//        library.displayBooks();
-
-
-//        List<Book> actualBooks = library.displayBooks();
-
-//        assertEquals(actualBooks, books);
-    }
-
-    @Test
-    public void shouldLetCustomerCheckoutOneBook() throws InvalidBookException {
-        List<Book> books;
-        books = new ArrayList<>();
-        Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
-        Book book2 = new Book("The Lord of the Rings Trilogy", "J.R.R. Tolkien", 1996);
-        books.add(book1);
-        books.add(book2);
         Library library = new Library(books);
         String book = "The Harry Potter series";
 
-        library.checkoutBook(book);
-
-        assertTrue(library.containsCheckoutBook(book));
-        assertFalse(library.containsBook(book));
+        assertDoesNotThrow(() -> library.checkoutBook(book));
 
     }
 
     @Test
-    public void shouldThrowExceptionCustomerWhenCustomerWriteInvalidName() throws InvalidBookException {
+    public void shouldThrowExceptionWhenCustomerWriteInvalidNameToCheckOutBook() {
         List<Book> books;
         books = new ArrayList<>();
         Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
-        Book book2 = new Book("The Lord of the Rings Trilogy", "J.R.R. Tolkien", 1996);
         books.add(book1);
-        books.add(book2);
         Library library = new Library(books);
-        String book = "The Harry Potter seriesdd";
+        String book = "The Harry Potter seriesss";
 
         assertThrows(InvalidBookException.class, () -> library.checkoutBook(book));
-
     }
 
     @Test
-    public void shouldLetCustomerReturnOneBook() throws InvalidBookException {
-        List<Book> books;
-        books = new ArrayList<>();
-        Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
-        Book book2 = new Book("The Lord of the Rings Trilogy", "J.R.R. Tolkien", 1996);
-        books.add(book1);
-        books.add(book2);
-        Library library = new Library(books);
-        String book = "The Harry Potter series";
-        library.checkoutBook(book);
-
-        library.returnBook(book);
-
-        assertFalse(library.containsCheckoutBook(book));
-        assertTrue(library.containsBook(book));
-    }
-
-    @Test
-    public void shouldDisplaySuccessfulCheckoutMessageWhenCustomerCheckoutOneBook() throws InvalidBookException {
+    public void shouldNotThrowExceptionWhenCustomerReturnBookSuccessfully() throws InvalidBookException {
         List<Book> books;
         books = new ArrayList<>();
         Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
@@ -104,6 +60,25 @@ class LibraryTest {
         String book = "The Harry Potter series";
 
         library.checkoutBook(book);
+
+        assertDoesNotThrow(() -> library.returnBook(book));
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenCustomerWriteInvalidNameToReturnBook() throws InvalidBookException {
+        List<Book> books;
+        books = new ArrayList<>();
+        Book book1 = new Book("The Harry Potter series", "J.K. Rowling", 2000);
+        Book book2 = new Book("The Lord of the Rings Trilogy", "J.R.R. Tolkien", 1996);
+        books.add(book1);
+        books.add(book2);
+        Library library = new Library(books);
+        String bookCheckOut = "The Harry Potter series";
+        String bookReturn = "The Harry Potter seriess";
+
+        library.checkoutBook(bookCheckOut);
+
+        assertThrows(InvalidBookException.class, () -> library.returnBook(bookReturn));
 
     }
 

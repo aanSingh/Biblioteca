@@ -1,39 +1,25 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.logic.menu;
 
 import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Library;
 import org.junit.jupiter.api.Test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 class MenuTest {
     @Test
-    public void shouldAddAllMenuItemToMenu() {
-        MenuItem menuItem1 = new ViewBooks("View Book");
-        MenuItem menuItem2 = new CheckOut("Check Out");
-        MenuItem menuItem3 = new ReturnBook("Return Book");
-        MenuItem menuItem4 = new Quit("Quit");
-        List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(menuItem1);
-        menuItems.add(menuItem2);
-        menuItems.add(menuItem3);
-        menuItems.add(menuItem4);
-
-        Menu menu = new Menu(menuItems);
-
-        assertEquals(4, menu.itemSize());
-    }
-
-    @Test
     public void shouldReturnMenuItems() {
-        MenuItem menuItem1 = new ViewBooks("View Books");
-        MenuItem menuItem2 = new CheckOut("Check Out");
-        MenuItem menuItem3 = new ReturnBook("Return Book");
-        MenuItem menuItem4 = new Quit("Quit");
+        MenuItem menuItem1 = new ViewBooks();
+        MenuItem menuItem2 = new CheckOut();
+        MenuItem menuItem3 = new ReturnBook();
+        MenuItem menuItem4 = new Quit();
         List<MenuItem> menuItems = new ArrayList<>();
         menuItems.add(menuItem1);
         menuItems.add(menuItem2);
@@ -42,29 +28,34 @@ class MenuTest {
         Menu menu = new Menu(menuItems);
 
         String actualMenu = menu.display();
-        String expectedMenu = "Biblotecha Library\n1. View Books\n2. Check Out\n3. Return Book\n4. Quit\n";
-
+        System.out.println(actualMenu);
+        String expectedMenu = "\tBiblotecha Library\n" +
+                "\t1. View Books\n" +
+                "\t2. Checkout book\n" +
+                "\t3. Return book\n" +
+                "\t4. Quit\n";
         assertEquals(expectedMenu, actualMenu);
 
     }
 
     @Test
-    public void shouldViewListOfBooksWhenOptionOneIsSelected() throws InvalidBookException {
+    public void shouldViewListOfBooksWhenOptionOneIsSelected() throws InvalidBookException, IOException {
         List<MenuItem> menuItems = new ArrayList<>();
         MenuItem viewBooks = mock(ViewBooks.class);
         menuItems.add(viewBooks);
         Menu menu = new Menu(menuItems);
         Library library = mock(Library.class);
-        Bibliotecha bibliotecha = mock(Bibliotecha.class);
+        BufferedReader bufferedReader = mock(BufferedReader.class);
+        PrintWriter printWriter = mock(PrintWriter.class);
 
-        menu.select(1, library, bibliotecha);
+        menu.select(1, library, bufferedReader, printWriter);
 
-        verify(viewBooks, times(1)).action(library, bibliotecha);
+        verify(viewBooks, times(1)).action(library, bufferedReader, printWriter);
 
     }
 
     @Test
-    public void shouldCheckOutBookWhenOptionTwoIsSelected() throws InvalidBookException {
+    public void shouldCheckOutBookWhenOptionTwoIsSelected() throws InvalidBookException, IOException {
         List<MenuItem> menuItems = new ArrayList<>();
         MenuItem viewBook = mock(ViewBooks.class);
         MenuItem checkOut = mock(CheckOut.class);
@@ -72,17 +63,18 @@ class MenuTest {
         menuItems.add(checkOut);
         Menu menu = new Menu(menuItems);
         Library library = mock(Library.class);
-        Bibliotecha bibliotecha = mock(Bibliotecha.class);
+        BufferedReader bufferedReader = mock(BufferedReader.class);
+        PrintWriter printWriter = mock(PrintWriter.class);
 
-        menu.select(2, library, bibliotecha);
+        menu.select(2, library, bufferedReader, printWriter);
 
-        verify(checkOut, times(1)).action(library, bibliotecha);
+        verify(checkOut, times(1)).action(library, bufferedReader, printWriter);
 
     }
 
 
     @Test
-    public void shouldReturnBookWhenOptionThreeIsSelected() throws InvalidBookException {
+    public void shouldReturnBookWhenOptionThreeIsSelected() throws InvalidBookException, IOException {
         List<MenuItem> menuItems = new ArrayList<>();
         MenuItem returnBook = mock(ReturnBook.class);
         MenuItem viewBook = mock(ViewBooks.class);
@@ -92,17 +84,18 @@ class MenuTest {
         menuItems.add(checkOut);
         Menu menu = new Menu(menuItems);
         Library library = mock(Library.class);
-        Bibliotecha bibliotecha = mock(Bibliotecha.class);
+        BufferedReader bufferedReader = mock(BufferedReader.class);
+        PrintWriter printWriter = mock(PrintWriter.class);
 
-        menu.select(3, library, bibliotecha);
+        menu.select(3, library, bufferedReader, printWriter);
 
-        verify(checkOut, times(1)).action(library, bibliotecha);
+        verify(checkOut, times(1)).action(library, bufferedReader, printWriter);
 
     }
 
 
     @Test
-    public void shouldExitFromMenu() throws InvalidBookException {
+    public void shouldExitFromMenu() throws InvalidBookException, IOException {
         List<MenuItem> menuItems = new ArrayList<>();
         MenuItem returnBook = mock(ReturnBook.class);
         MenuItem viewBook = mock(ViewBooks.class);
@@ -114,11 +107,12 @@ class MenuTest {
         menuItems.add(quit);
         Menu menu = new Menu(menuItems);
         Library library = mock(Library.class);
-        Bibliotecha bibliotecha = mock(Bibliotecha.class);
+        BufferedReader bufferedReader = mock(BufferedReader.class);
+        PrintWriter printWriter = mock(PrintWriter.class);
 
-        menu.select(4, library, bibliotecha);
+        menu.select(4, library, bufferedReader, printWriter);
 
-        verify(quit, times(1)).action(library, bibliotecha);
+        verify(quit, times(1)).action(library, bufferedReader, printWriter);
 
     }
 
