@@ -18,5 +18,5 @@ public class Message {
     public static final String ENTER_MOVIE_TITLE = "Enter the movie title : ";
     public static final String SUCCESSFUL_RETURN_MOVIE = "Thank you for returning the movie";
     public static final String UNSUCCESSFUL_RETURN_MOVIE = "That is not a valid movie to return";
-
+    public static final String Exit = "Thank you for using bibloteca, Come back soon !!";
 }

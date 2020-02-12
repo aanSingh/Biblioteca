@@ -112,6 +112,7 @@ public class BiblotecaApp implements Bibloteca {
 
     @Override
     public void quitApp() {
+        System.out.println(Message.Exit);
         System.exit(0);
     }
 
