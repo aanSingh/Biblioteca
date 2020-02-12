@@ -7,7 +7,7 @@ import com.twu.biblioteca.logic.Library;
 
 import java.util.List;
 
-public class ViewBooks extends MenuItem {
+public class ViewBooks implements MenuItem {
 
     @Override
     public void action(Library library, BiblotecaApp biblotecaApp) {

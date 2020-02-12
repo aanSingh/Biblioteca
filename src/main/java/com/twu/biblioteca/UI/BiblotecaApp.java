@@ -51,7 +51,7 @@ public class BiblotecaApp implements Bibloteca {
     }
 
     private void message() {
-        System.out.println("\n" + Message.WELCOME + "\n");
+        System.out.println(Message.WELCOME);
     }
 
     private void getChoice() throws InvalidBookException {
@@ -97,5 +97,10 @@ public class BiblotecaApp implements Bibloteca {
         Scanner scanner = new Scanner(System.in);
         System.out.println(Message.ENTER_DISPLAY_FORMAT);
         return scanner.nextLine();
+    }
+
+    @Override
+    public void quitApp() {
+        System.exit(0);
     }
 }

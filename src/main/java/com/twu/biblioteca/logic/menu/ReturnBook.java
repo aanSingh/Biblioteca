@@ -5,7 +5,7 @@ import com.twu.biblioteca.constants.Message;
 import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Library;
 
-public class ReturnBook extends MenuItem {
+public class ReturnBook implements MenuItem {
     @Override
     public void action(Library library, BiblotecaApp biblotecaApp) {
         String bookTitle = biblotecaApp.getBookTitle();
