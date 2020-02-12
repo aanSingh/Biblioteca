@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.*;
 
-class CheckOutTest {
+class CheckOutBookTest {
     @Test
     public void shouldReturnDescriptionForCheckoutOption() throws InvalidBookException {
-        MenuItem menuItem = new CheckOut();
+        MenuItem menuItem = new CheckOutBook();
         String expectedQuitDescription = "Checkout book";
 
         String actualQuitDescription = menuItem.description();
@@ -22,7 +22,7 @@ class CheckOutTest {
     @Test
     public void shouldCheckOutABook() throws InvalidBookException {
         Library libraryMock = mock(Library.class);
-        MenuItem checkoutBook = new CheckOut();
+        MenuItem checkoutBook = new CheckOutBook();
         BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
 
         when(biblotecaApp.getBookTitle()).thenReturn("The Harry Potter series");

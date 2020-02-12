@@ -28,7 +28,7 @@ public class BiblotecaApp implements Bibloteca {
 
     private void init() {
         MenuItem viewBook = new ViewBooks();
-        MenuItem checkOutBook = new CheckOut();
+        MenuItem checkOutBook = new CheckOutBook();
         MenuItem returnBook = new ReturnBook();
         MenuItem quit = new Quit();
 
