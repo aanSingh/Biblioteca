@@ -1,8 +1,10 @@
 package com.twu.biblioteca.logic.menu;
 
-import com.twu.biblioteca.UI.BiblotecaApp;
+import com.twu.biblioteca.UI.ConsoleUI;
 import com.twu.biblioteca.exceptions.InvalidBookException;
+import com.twu.biblioteca.logic.Bibloteca;
 import com.twu.biblioteca.logic.Library;
+import com.twu.biblioteca.logic.menu.options.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -52,11 +54,11 @@ class MenuTest {
         menuItems.add(viewBooks);
         Menu menu = new Menu(menuItems);
         Library library = mock(Library.class);
-        BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
+        Bibloteca bibloteca = mock(ConsoleUI.class);
 
-        menu.select(1, library, biblotecaApp);
+        menu.select(1, library, bibloteca);
 
-        verify(viewBooks, times(1)).action(library, biblotecaApp);
+        verify(viewBooks, times(1)).action(library, bibloteca);
 
     }
 
@@ -69,11 +71,11 @@ class MenuTest {
         menuItems.add(checkOut);
         Menu menu = new Menu(menuItems);
         Library library = mock(Library.class);
-        BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
+        Bibloteca bibloteca = mock(ConsoleUI.class);
 
-        menu.select(2, library, biblotecaApp);
+        menu.select(2, library, bibloteca);
 
-        verify(checkOut, times(1)).action(library, biblotecaApp);
+        verify(checkOut, times(1)).action(library, bibloteca);
 
     }
 
@@ -89,11 +91,11 @@ class MenuTest {
         menuItems.add(checkOut);
         Menu menu = new Menu(menuItems);
         Library library = mock(Library.class);
-        BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
+        Bibloteca bibloteca = mock(ConsoleUI.class);
 
-        menu.select(3, library, biblotecaApp);
+        menu.select(3, library, bibloteca);
 
-        verify(checkOut, times(1)).action(library, biblotecaApp);
+        verify(checkOut, times(1)).action(library, bibloteca);
 
     }
 
@@ -111,11 +113,11 @@ class MenuTest {
         menuItems.add(quit);
         Menu menu = new Menu(menuItems);
         Library library = mock(Library.class);
-        BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
+        Bibloteca bibloteca = mock(ConsoleUI.class);
 
-        menu.select(4, library, biblotecaApp);
+        menu.select(4, library, bibloteca);
 
-        verify(quit, times(1)).action(library, biblotecaApp);
+        verify(quit, times(1)).action(library, bibloteca);
 
     }
 
@@ -134,11 +136,11 @@ class MenuTest {
         menuItems.add(quit);
         Menu menu = new Menu(menuItems);
         Library library = mock(Library.class);
-        BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
+        Bibloteca bibloteca = mock(ConsoleUI.class);
 
-        menu.select(4, library, biblotecaApp);
+        menu.select(4, library, bibloteca);
 
-        verify(viewMovies, times(1)).action(library, biblotecaApp);
+        verify(viewMovies, times(1)).action(library, bibloteca);
 
     }
 
@@ -159,11 +161,11 @@ class MenuTest {
         menuItems.add(quit);
         Menu menu = new Menu(menuItems);
         Library library = mock(Library.class);
-        BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
+        Bibloteca bibloteca = mock(ConsoleUI.class);
 
-        menu.select(5, library, biblotecaApp);
+        menu.select(5, library, bibloteca);
 
-        verify(checkoutMovie, times(1)).action(library, biblotecaApp);
+        verify(checkoutMovie, times(1)).action(library, bibloteca);
 
     }
 
@@ -186,11 +188,11 @@ class MenuTest {
         menuItems.add(quit);
         Menu menu = new Menu(menuItems);
         Library library = mock(Library.class);
-        BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
+        Bibloteca bibloteca = mock(ConsoleUI.class);
 
-        menu.select(6, library, biblotecaApp);
+        menu.select(6, library, bibloteca);
 
-        verify(returnMovie, times(1)).action(library, biblotecaApp);
+        verify(returnMovie, times(1)).action(library, bibloteca);
 
     }
 }

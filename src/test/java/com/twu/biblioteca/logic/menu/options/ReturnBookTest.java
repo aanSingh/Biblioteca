@@ -1,9 +1,10 @@
-package com.twu.biblioteca.logic.menu;
+package com.twu.biblioteca.logic.menu.options;
 
-import com.twu.biblioteca.UI.BiblotecaApp;
+import com.twu.biblioteca.UI.ConsoleUI;
 import com.twu.biblioteca.exceptions.InvalidBookException;
+import com.twu.biblioteca.logic.Bibloteca;
 import com.twu.biblioteca.logic.Library;
-import com.twu.biblioteca.logic.menu.Options.ReturnBook;
+import com.twu.biblioteca.logic.menu.MenuItem;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -25,11 +26,11 @@ class ReturnBookTest {
     public void shouldReturnABook() throws InvalidBookException {
         Library libraryMock = mock(Library.class);
         MenuItem returnBook = new ReturnBook();
-        BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
+        Bibloteca bibloteca = mock(ConsoleUI.class);
 
-        when(biblotecaApp.getBookTitle()).thenReturn("The Harry Potter series");
+        when(bibloteca.getBookTitle()).thenReturn("The Harry Potter series");
 
-        returnBook.action(libraryMock, biblotecaApp);
+        returnBook.action(libraryMock, bibloteca);
         verify(libraryMock, times(1)).returnBook("The Harry Potter series");
 
     }

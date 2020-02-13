@@ -1,9 +1,10 @@
-package com.twu.biblioteca.logic.menu;
+package com.twu.biblioteca.logic.menu.options;
 
-import com.twu.biblioteca.UI.BiblotecaApp;
+import com.twu.biblioteca.UI.ConsoleUI;
 import com.twu.biblioteca.exceptions.InvalidBookException;
+import com.twu.biblioteca.logic.Bibloteca;
 import com.twu.biblioteca.logic.Library;
-import com.twu.biblioteca.logic.menu.Options.ViewMovies;
+import com.twu.biblioteca.logic.menu.MenuItem;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,9 +25,9 @@ class ViewMoviesTest {
     public void shouldViewAllMovies() throws InvalidBookException {
         Library libraryMock = mock(Library.class);
         MenuItem viewMovies = new ViewMovies();
-        BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
+        Bibloteca bibloteca = mock(ConsoleUI.class);
 
-        viewMovies.action(libraryMock, biblotecaApp);
+        viewMovies.action(libraryMock, bibloteca);
 
         verify(libraryMock, times(1)).movies();
 

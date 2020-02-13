@@ -1,21 +1,23 @@
-package com.twu.biblioteca.logic.menu;
+package com.twu.biblioteca.logic.menu.options;
 
 import com.twu.biblioteca.UI.BiblotecaApp;
 import com.twu.biblioteca.constants.Message;
 import com.twu.biblioteca.exceptions.InvalidBookException;
+import com.twu.biblioteca.logic.Bibloteca;
 import com.twu.biblioteca.logic.Library;
+import com.twu.biblioteca.logic.menu.MenuItem;
 
 public class CheckOutBook implements MenuItem {
     @Override
-    public void action(Library library, BiblotecaApp biblotecaApp) {
-        String bookTitle = biblotecaApp.getBookTitle();
+    public void action(Library library, Bibloteca bibloteca) {
+        String bookTitle = bibloteca.getBookTitle();
 
         try {
             library.checkoutBook(bookTitle);
-            biblotecaApp.displayMessage(Message.SUCCESSFUL_CHECKOUT);
+            bibloteca.displayMessage(Message.SUCCESSFUL_CHECKOUT);
 
         } catch (InvalidBookException e) {
-            biblotecaApp.displayMessage(Message.UNSUCCESSFUL_CHECKOUT);
+            bibloteca.displayMessage(Message.UNSUCCESSFUL_CHECKOUT);
         }
 
     }

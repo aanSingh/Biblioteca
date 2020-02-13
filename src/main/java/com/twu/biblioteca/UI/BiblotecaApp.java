@@ -2,17 +2,15 @@ package com.twu.biblioteca.UI;
 
 import com.twu.biblioteca.constants.Message;
 import com.twu.biblioteca.exceptions.InvalidBookException;
-import com.twu.biblioteca.logic.Book;
-import com.twu.biblioteca.logic.Library;
-import com.twu.biblioteca.logic.Bibloteca;
-import com.twu.biblioteca.logic.Movie;
+import com.twu.biblioteca.logic.*;
 import com.twu.biblioteca.logic.menu.*;
+import com.twu.biblioteca.logic.menu.options.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class BiblotecaApp implements Bibloteca {
+public class BiblotecaApp {
     Menu menu;
     Library library;
 
@@ -21,10 +19,11 @@ public class BiblotecaApp implements Bibloteca {
 
     public static void main(String[] args) throws InvalidBookException {
         BiblotecaApp biblotecaApp = new BiblotecaApp();
+        Bibloteca bibloteca = new ConsoleUI();
 
-        biblotecaApp.displayMessage(Message.WELCOME);
+        bibloteca.displayMessage(Message.WELCOME);
         biblotecaApp.init();
-        biblotecaApp.menu();
+        biblotecaApp.menu(bibloteca);
     }
 
     private void init() {
@@ -65,66 +64,23 @@ public class BiblotecaApp implements Bibloteca {
         library = new Library(books, movies);
     }
 
-    private void getChoice() throws InvalidBookException {
+    private void getChoice(Bibloteca bibloteca) throws InvalidBookException {
         System.out.println(Message.ENTER_OPTION);
         Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
 
-        execute(choice, library, this);
+        execute(choice, library, bibloteca);
     }
 
-    private void menu() throws InvalidBookException {
+    private void menu(Bibloteca bibloteca) throws InvalidBookException {
         //noinspection InfiniteLoopStatement
         while (true) {
             System.out.println(menu.display());
-            getChoice();
+            getChoice(bibloteca);
         }
     }
 
-    @Override
-    public void execute(int choice, Library library, BiblotecaApp biblotecaApp) throws InvalidBookException {
-        menu.select(choice, library, biblotecaApp);
-    }
-
-    @Override
-    public String getBookTitle() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(Message.ENTER_BOOK_TITLE);
-        return scanner.nextLine();
-    }
-
-    @Override
-    public void displayMessage(String message) {
-        System.out.println("\n"+message+"\n");
-    }
-
-    @Override
-    public void displayBookList(String bookList) {
-        System.out.println(bookList);
-    }
-
-    @Override
-    public String getFormat() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(Message.ENTER_DISPLAY_FORMAT);
-        return scanner.nextLine();
-    }
-
-    @Override
-    public void quitApp() {
-        System.out.println(Message.Exit);
-        System.exit(0);
-    }
-
-    @Override
-    public void displayMovieList(String movieList) {
-        System.out.println(movieList);
-    }
-
-    @Override
-    public String getMovieTitle() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(Message.ENTER_MOVIE_TITLE);
-        return scanner.nextLine();
+    public void execute(int choice, Library library, Bibloteca bibloteca) throws InvalidBookException {
+        menu.select(choice, library, bibloteca);
     }
 }

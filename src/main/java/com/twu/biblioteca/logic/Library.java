@@ -64,7 +64,7 @@ public class Library {
         throw new InvalidBookException();
     }
 
-    public Movie findMovieByName(String movieName, List<Movie> movieList) throws InvalidMovieException {
+    private Movie findMovieByName(String movieName, List<Movie> movieList) throws InvalidMovieException {
         for (Movie movie : movieList) {
             if (movie.getName().equals(movieName)) {
                 return movie;
