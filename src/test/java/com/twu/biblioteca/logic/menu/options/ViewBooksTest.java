@@ -3,16 +3,20 @@ package com.twu.biblioteca.logic.menu;
 import com.twu.biblioteca.UI.BiblotecaApp;
 import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Library;
+import com.twu.biblioteca.logic.menu.Options.ViewBooks;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
+
 import static org.mockito.Mockito.*;
 
-class CheckOutBookTest {
+class ViewBooksTest {
     @Test
-    public void shouldReturnDescriptionForCheckoutOption() {
-        MenuItem menuItem = new CheckOutBook();
-        String expectedQuitDescription = "Checkout book";
+    public void shouldReturnDescriptionForReturnBookOption() throws InvalidBookException {
+        MenuItem menuItem = new ViewBooks();
+        String expectedQuitDescription = "View Books";
 
         String actualQuitDescription = menuItem.description();
 
@@ -20,14 +24,15 @@ class CheckOutBookTest {
     }
 
     @Test
-    public void shouldCheckOutABook() throws InvalidBookException {
+    public void shouldViewAllBooks() throws InvalidBookException, IOException {
         Library libraryMock = mock(Library.class);
-        MenuItem checkoutBook = new CheckOutBook();
+        MenuItem viewBooks = new ViewBooks();
         BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
 
-        when(biblotecaApp.getBookTitle()).thenReturn("The Harry Potter series");
+        viewBooks.action(libraryMock, biblotecaApp);
 
-        checkoutBook.action(libraryMock, biblotecaApp);
-        verify(libraryMock, times(1)).checkoutBook("The Harry Potter series");
+        verify(libraryMock, times(1)).books();
+
     }
+
 }

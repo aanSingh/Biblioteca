@@ -3,19 +3,18 @@ package com.twu.biblioteca.logic.menu;
 import com.twu.biblioteca.UI.BiblotecaApp;
 import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Library;
+import com.twu.biblioteca.logic.menu.Options.Quit;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-
-
 import static org.mockito.Mockito.*;
 
-class ViewBooksTest {
+
+class QuitTest {
     @Test
-    public void shouldReturnDescriptionForReturnBookOption() throws InvalidBookException {
-        MenuItem menuItem = new ViewBooks();
-        String expectedQuitDescription = "View Books";
+    public void shouldReturnDescriptionForQuitOption() {
+        MenuItem menuItem = new Quit();
+        String expectedQuitDescription = "Quit";
 
         String actualQuitDescription = menuItem.description();
 
@@ -23,15 +22,14 @@ class ViewBooksTest {
     }
 
     @Test
-    public void shouldViewAllBooks() throws InvalidBookException, IOException {
-        Library libraryMock = mock(Library.class);
-        MenuItem viewBooks = new ViewBooks();
+    public void shouldQuitApplication() throws InvalidBookException {
+        MenuItem menuItem = new Quit();
         BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
+        Library library = mock(Library.class);
 
-        viewBooks.action(libraryMock, biblotecaApp);
+        menuItem.action(library, biblotecaApp);
 
-        verify(libraryMock, times(1)).books();
-
+        verify(biblotecaApp, times(1)).quitApp();
     }
 
 }

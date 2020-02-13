@@ -3,6 +3,7 @@ package com.twu.biblioteca.logic.menu;
 import com.twu.biblioteca.UI.BiblotecaApp;
 import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Library;
+import com.twu.biblioteca.logic.menu.Options.ViewMovies;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

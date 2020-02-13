@@ -1,21 +1,20 @@
 package com.twu.biblioteca.logic.menu;
 
 import com.twu.biblioteca.UI.BiblotecaApp;
-import com.twu.biblioteca.exceptions.InvalidBookException;
+import com.twu.biblioteca.exceptions.InvalidMovieException;
 import com.twu.biblioteca.logic.Library;
+import com.twu.biblioteca.logic.menu.Options.ReturnMovie;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
 
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
 
-class ReturnBookTest {
+class ReturnMovieTest {
     @Test
     public void shouldReturnDescriptionForReturnBookOption() {
-        MenuItem menuItem = new ReturnBook();
-        String expectedQuitDescription = "Return book";
+        MenuItem menuItem = new ReturnMovie();
+        String expectedQuitDescription = "Return Movie";
 
         String actualQuitDescription = menuItem.description();
 
@@ -23,16 +22,15 @@ class ReturnBookTest {
     }
 
     @Test
-    public void shouldReturnABook() throws InvalidBookException {
+    public void shouldReturnAMovie() throws InvalidMovieException {
         Library libraryMock = mock(Library.class);
-        MenuItem returnBook = new ReturnBook();
+        MenuItem returnMovie = new ReturnMovie();
         BiblotecaApp biblotecaApp = mock(BiblotecaApp.class);
 
-        when(biblotecaApp.getBookTitle()).thenReturn("The Harry Potter series");
+        when(biblotecaApp.getMovieTitle()).thenReturn("A Nightmare on Elm Street");
 
-        returnBook.action(libraryMock, biblotecaApp);
-        verify(libraryMock, times(1)).returnBook("The Harry Potter series");
+        returnMovie.action(libraryMock, biblotecaApp);
+        verify(libraryMock, times(1)).returnMovie("A Nightmare on Elm Street");
 
     }
-
 }

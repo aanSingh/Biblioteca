@@ -3,6 +3,7 @@ package com.twu.biblioteca.logic.menu;
 import com.twu.biblioteca.UI.BiblotecaApp;
 import com.twu.biblioteca.exceptions.InvalidMovieException;
 import com.twu.biblioteca.logic.Library;
+import com.twu.biblioteca.logic.menu.Options.CheckOutMovie;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +14,7 @@ class CheckOutMovieTest {
     @Test
     public void shouldReturnDescriptionForCheckoutOption() {
         MenuItem menuItem = new CheckOutMovie();
-        String expectedQuitDescription = "Checkout movie";
+        String expectedQuitDescription = "Checkout Movie";
 
         String actualQuitDescription = menuItem.description();
 

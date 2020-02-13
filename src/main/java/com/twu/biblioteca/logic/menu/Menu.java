@@ -17,7 +17,7 @@ public class Menu {
     }
 
     public String display() {
-        StringBuilder menu = new StringBuilder(Message.LIBRARY_NAME);
+        StringBuilder menu = new StringBuilder("\t"+Message.LIBRARY_NAME+"\n");
 
         for (int index = 0; index < menuItem.size(); index++)
             menu.append("\t").append(index + 1).append(". ").append(menuItem.get(index).description()).append("\n");

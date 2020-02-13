@@ -12,7 +12,7 @@ public class ViewMovies implements MenuItem {
     public void action(Library library, BiblotecaApp biblotecaApp) {
         String movieFormat = biblotecaApp.getFormat();
 
-        StringBuilder movieList = new StringBuilder(Message.MOVIE_LIST);
+        StringBuilder movieList = new StringBuilder("\t\t\t"+Message.MOVIE_LIST+"\n");
         List<Movie> movies = library.movies();
 
         if (movies.size() == 0) {

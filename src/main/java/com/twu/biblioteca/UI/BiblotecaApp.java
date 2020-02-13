@@ -95,7 +95,7 @@ public class BiblotecaApp implements Bibloteca {
 
     @Override
     public void displayMessage(String message) {
-        System.out.println(message);
+        System.out.println("\n"+message+"\n");
     }
 
     @Override

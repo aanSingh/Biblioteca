@@ -13,7 +13,7 @@ public class ViewBooks implements MenuItem {
     public void action(Library library, BiblotecaApp biblotecaApp) {
         String bookFormat = biblotecaApp.getFormat();
 
-        StringBuilder bookList = new StringBuilder(Message.BOOK_LIST);
+        StringBuilder bookList = new StringBuilder("\t\t\t"+Message.BOOK_LIST+"\n");
         List<Book> books = library.books();
 
         if (books.size() == 0) {
