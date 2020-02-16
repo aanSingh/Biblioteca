@@ -12,6 +12,8 @@ import java.util.Scanner;
 
 public class BiblotecaApp {
     Menu menu;
+    MenuCustomer menuCustomer;
+    MenuLibrarian menuLibrarian;
     Library library;
 
     BiblotecaApp() {
@@ -23,28 +25,51 @@ public class BiblotecaApp {
 
         bibloteca.displayMessage(Message.WELCOME);
         biblotecaApp.init();
-        biblotecaApp.menu(bibloteca);
+        biblotecaApp.userMenu(bibloteca);
     }
 
+
     private void init() {
+        MenuItem login = new Login();
         MenuItem viewBook = new ViewBooks();
         MenuItem checkOutBook = new CheckOutBook();
         MenuItem returnBook = new ReturnBook();
         MenuItem viewMovies = new ViewMovies();
         MenuItem checkOutMovie = new CheckOutMovie();
         MenuItem returnMovie = new ReturnMovie();
+        MenuItem logout = new Logout();
         MenuItem quit = new Quit();
+        MenuItem viewCheckoutBooks = new ViewCheckoutDetails();
 
-        List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(viewBook);
-        menuItems.add(checkOutBook);
-        menuItems.add(returnBook);
-        menuItems.add(viewMovies);
-        menuItems.add(checkOutMovie);
-        menuItems.add(returnMovie);
-        menuItems.add(quit);
+        List<MenuItem> menuItemLibraries = new ArrayList<>();
+        menuItemLibraries.add(viewBook);
+        menuItemLibraries.add(checkOutBook);
+        menuItemLibraries.add(returnBook);
+        menuItemLibraries.add(viewMovies);
+        menuItemLibraries.add(checkOutMovie);
+        menuItemLibraries.add(returnMovie);
+        menuItemLibraries.add(logout);
+        menuItemLibraries.add(quit);
+        menu = new Menu(menuItemLibraries);
 
-        menu = new Menu(menuItems);
+        List<MenuItem> menuItemDefault = new ArrayList<>();
+        menuItemDefault.add(login);
+        menuItemDefault.add(viewBook);
+        menuItemDefault.add(viewMovies);
+        menuItemDefault.add(quit);
+        menuCustomer = new MenuCustomer(menuItemDefault);
+
+        List<MenuItem> menuItemLibrarian = new ArrayList<>();
+        menuItemLibrarian.add(viewBook);
+        menuItemLibrarian.add(checkOutBook);
+        menuItemLibrarian.add(returnBook);
+        menuItemLibrarian.add(viewMovies);
+        menuItemLibrarian.add(checkOutMovie);
+        menuItemLibrarian.add(returnMovie);
+        menuItemLibrarian.add(viewCheckoutBooks);
+        menuItemLibrarian.add(logout);
+        menuItemLibrarian.add(quit);
+        menuLibrarian = new MenuLibrarian(menuItemLibrarian);
 
         List<Book> books;
         books = new ArrayList<>();
@@ -53,15 +78,52 @@ public class BiblotecaApp {
         books.add(book1);
         books.add(book2);
 
+        List<Movie> movies = new ArrayList<>();
         Movie movie1 = new Movie("A Nightmare on Elm Street", 1984, "Wes Craven", 8);
         Movie movie2 = new Movie("The Shawshank Redemption", 1994, " Frank Darabont", 9);
         Movie movie3 = new Movie("The Godfather", 1972, "Francis Ford Coppola", 9);
-        List<Movie> movies = new ArrayList<>();
         movies.add(movie1);
         movies.add(movie2);
         movies.add(movie3);
 
-        library = new Library(books, movies);
+        List<User> users = new ArrayList<>();
+        User user1 = new User("abc-1234", "12345", 1);
+        User user2 = new User("abd-1235", "123456", 1);
+        User user3 = new User("abe-1236", "1234567", 2);
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+
+        library = new Library(books, movies, users);
+    }
+
+
+    private void userMenu(Bibloteca bibloteca) throws InvalidBookException {
+        //noinspection InfiniteLoopStatement
+        while (true) {
+            User user = bibloteca.getUser();
+            if (user == null) {
+                System.out.println(menuCustomer.display());
+                getChoiceUser(bibloteca);
+            } else {
+                if (user.getRole() == 1) {
+                    System.out.println(menu.display());
+                    getChoice(bibloteca);
+                } else {
+                    System.out.println(menuLibrarian.display());
+                    getChoiceLibrarian(bibloteca);
+                }
+            }
+        }
+
+    }
+
+    private void getChoiceLibrarian(Bibloteca bibloteca) throws InvalidBookException {
+        System.out.println(Message.ENTER_OPTION);
+        Scanner scanner = new Scanner(System.in);
+        int choice = scanner.nextInt();
+
+        executeLibraian(choice, library, bibloteca);
     }
 
     private void getChoice(Bibloteca bibloteca) throws InvalidBookException {
@@ -72,15 +134,25 @@ public class BiblotecaApp {
         execute(choice, library, bibloteca);
     }
 
-    private void menu(Bibloteca bibloteca) throws InvalidBookException {
-        //noinspection InfiniteLoopStatement
-        while (true) {
-            System.out.println(menu.display());
-            getChoice(bibloteca);
-        }
+    private void getChoiceUser(Bibloteca bibloteca) {
+        System.out.println(Message.ENTER_OPTION);
+        Scanner scanner = new Scanner(System.in);
+        int choice = scanner.nextInt();
+
+        executeUser(choice, library, bibloteca);
     }
 
     public void execute(int choice, Library library, Bibloteca bibloteca) throws InvalidBookException {
         menu.select(choice, library, bibloteca);
     }
+
+    public void executeUser(int choice, Library library, Bibloteca bibloteca) {
+        menuCustomer.select(choice, library, bibloteca);
+    }
+
+    public void executeLibraian(int choice, Library library, Bibloteca bibloteca) throws InvalidBookException {
+        menuLibrarian.select(choice, library, bibloteca);
+    }
+
+
 }

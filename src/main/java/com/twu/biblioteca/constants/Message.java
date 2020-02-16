@@ -14,7 +14,7 @@ public class Message {
     public static final String EMPTY_LIBRARY = "Library is empty";
     public static final String MOVIE_LIST = "----------Movie List----------";
     public static final String SUCCESSFUL_CHECKOUT_MOVIE = "Thank you! Enjoy the movie";
-    public static final String UNSUCCESSFUL_CHECKOUT_MOVIE = "That is not a valid movie to return";
+    public static final String UNSUCCESSFUL_CHECKOUT_MOVIE = "That is not a valid movie";
     public static final String ENTER_MOVIE_TITLE = "Enter the movie title : ";
     public static final String SUCCESSFUL_RETURN_MOVIE = "Thank you for returning the movie";
     public static final String UNSUCCESSFUL_RETURN_MOVIE = "That is not a valid movie to return";

@@ -16,183 +16,98 @@ import static org.mockito.Mockito.*;
 class MenuTest {
     @Test
     public void shouldReturnMenuItems() {
-        MenuItem menuItem1 = new ViewBooks();
-        MenuItem menuItem2 = new CheckOutBook();
-        MenuItem menuItem3 = new ReturnBook();
-        MenuItem menuItem4 = new ViewMovies();
-        MenuItem menuItem5 = new CheckOutMovie();
-        MenuItem menuItem6 = new ReturnMovie();
-        MenuItem menuItem7 = new Quit();
-        List<MenuItem> menuItems = new ArrayList<>();
-        menuItems.add(menuItem1);
-        menuItems.add(menuItem2);
-        menuItems.add(menuItem3);
-        menuItems.add(menuItem4);
-        menuItems.add(menuItem5);
-        menuItems.add(menuItem6);
-        menuItems.add(menuItem7);
+        MenuItem menuItem1 = new Login();
+        MenuItem menuItem2 = new ViewBooks();
+        MenuItem menuItem3 = new ViewMovies();
+        MenuItem menuItem4 = new Quit();
+        List<MenuItem> menuItemLibraries = new ArrayList<>();
+        menuItemLibraries.add(menuItem1);
+        menuItemLibraries.add(menuItem2);
+        menuItemLibraries.add(menuItem3);
+        menuItemLibraries.add(menuItem4);
 
-        Menu menu = new Menu(menuItems);
+        Menu menu = new Menu(menuItemLibraries);
 
         String actualMenu = menu.display();
         String expectedMenu = "\tBiblotecha Library\n" +
-                "\t1. View Books\n" +
-                "\t2. Checkout book\n" +
-                "\t3. Return book\n" +
-                "\t4. View Movies\n" +
-                "\t5. Checkout Movie\n" +
-                "\t6. Return Movie\n" +
-                "\t7. Quit\n";
+                "\t1. Login User\n" +
+                "\t2. View Books\n" +
+                "\t3. View Movies\n" +
+                "\t4. Quit\n";
         assertEquals(expectedMenu, actualMenu);
 
     }
 
     @Test
-    public void shouldViewListOfBooksWhenOptionOneIsSelected() throws InvalidBookException {
-        List<MenuItem> menuItems = new ArrayList<>();
-        MenuItem viewBooks = mock(ViewBooks.class);
-        menuItems.add(viewBooks);
-        Menu menu = new Menu(menuItems);
+    public void shouldViewLoginUserWhenOptionOneIsSelected() throws InvalidBookException {
+        List<MenuItem> menuItemLibraries = new ArrayList<>();
+        MenuItem login = mock(Login.class);
+        menuItemLibraries.add(login);
+        Menu menu = new Menu(menuItemLibraries);
         Library library = mock(Library.class);
         Bibloteca bibloteca = mock(ConsoleUI.class);
 
         menu.select(1, library, bibloteca);
 
-        verify(viewBooks, times(1)).action(library, bibloteca);
+        verify(login, times(1)).action(library, bibloteca);
 
     }
 
     @Test
-    public void shouldCheckOutBookWhenOptionTwoIsSelected() throws InvalidBookException {
-        List<MenuItem> menuItems = new ArrayList<>();
+    public void shouldViewListOfBooksWhenOptionTwoIsSelected() throws InvalidBookException {
+        List<MenuItem> menuItemLibraries = new ArrayList<>();
+        MenuItem login = mock(Login.class);
         MenuItem viewBook = mock(ViewBooks.class);
-        MenuItem checkOut = mock(CheckOutBook.class);
-        menuItems.add(viewBook);
-        menuItems.add(checkOut);
-        Menu menu = new Menu(menuItems);
+        menuItemLibraries.add(login);
+        menuItemLibraries.add(viewBook);
+        Menu menu = new Menu(menuItemLibraries);
         Library library = mock(Library.class);
         Bibloteca bibloteca = mock(ConsoleUI.class);
 
         menu.select(2, library, bibloteca);
 
-        verify(checkOut, times(1)).action(library, bibloteca);
+        verify(viewBook, times(1)).action(library, bibloteca);
 
     }
 
-
     @Test
-    public void shouldReturnBookWhenOptionThreeIsSelected() throws InvalidBookException {
-        List<MenuItem> menuItems = new ArrayList<>();
-        MenuItem returnBook = mock(ReturnBook.class);
+    public void shouldViewListOfMoviesWhenOptionFourIsSelected() throws InvalidBookException {
+        List<MenuItem> menuItemLibraries = new ArrayList<>();
+        MenuItem login = mock(Login.class);
         MenuItem viewBook = mock(ViewBooks.class);
-        MenuItem checkOut = mock(CheckOutBook.class);
-        menuItems.add(returnBook);
-        menuItems.add(viewBook);
-        menuItems.add(checkOut);
-        Menu menu = new Menu(menuItems);
+        MenuItem viewMovie = mock(ViewBooks.class);
+        menuItemLibraries.add(login);
+        menuItemLibraries.add(viewBook);
+        menuItemLibraries.add(viewMovie);
+
+        Menu menu = new Menu(menuItemLibraries);
         Library library = mock(Library.class);
         Bibloteca bibloteca = mock(ConsoleUI.class);
 
         menu.select(3, library, bibloteca);
 
-        verify(checkOut, times(1)).action(library, bibloteca);
+        verify(viewMovie, times(1)).action(library, bibloteca);
 
     }
 
-
     @Test
     public void shouldExitFromMenu() throws InvalidBookException {
-        List<MenuItem> menuItems = new ArrayList<>();
+        List<MenuItem> menuItemLibraries = new ArrayList<>();
         MenuItem returnBook = mock(ReturnBook.class);
         MenuItem viewBook = mock(ViewBooks.class);
         MenuItem checkOut = mock(CheckOutBook.class);
         MenuItem quit = mock(Quit.class);
-        menuItems.add(returnBook);
-        menuItems.add(viewBook);
-        menuItems.add(checkOut);
-        menuItems.add(quit);
-        Menu menu = new Menu(menuItems);
+        menuItemLibraries.add(returnBook);
+        menuItemLibraries.add(viewBook);
+        menuItemLibraries.add(checkOut);
+        menuItemLibraries.add(quit);
+        Menu menu = new Menu(menuItemLibraries);
         Library library = mock(Library.class);
         Bibloteca bibloteca = mock(ConsoleUI.class);
 
         menu.select(4, library, bibloteca);
 
         verify(quit, times(1)).action(library, bibloteca);
-
-    }
-
-    @Test
-    public void shouldViewListOfMoviesWhenOptionFourIsSelected() throws InvalidBookException {
-        List<MenuItem> menuItems = new ArrayList<>();
-        MenuItem returnBook = mock(ReturnBook.class);
-        MenuItem viewBook = mock(ViewBooks.class);
-        MenuItem checkOut = mock(CheckOutBook.class);
-        MenuItem viewMovies = mock(ViewMovies.class);
-        MenuItem quit = mock(Quit.class);
-        menuItems.add(returnBook);
-        menuItems.add(viewBook);
-        menuItems.add(checkOut);
-        menuItems.add(viewMovies);
-        menuItems.add(quit);
-        Menu menu = new Menu(menuItems);
-        Library library = mock(Library.class);
-        Bibloteca bibloteca = mock(ConsoleUI.class);
-
-        menu.select(4, library, bibloteca);
-
-        verify(viewMovies, times(1)).action(library, bibloteca);
-
-    }
-
-    @Test
-    public void shouldCheckoutMovieWhenOptionFiveIsSelected() throws InvalidBookException {
-        List<MenuItem> menuItems = new ArrayList<>();
-        MenuItem returnBook = mock(ReturnBook.class);
-        MenuItem viewBook = mock(ViewBooks.class);
-        MenuItem checkOut = mock(CheckOutBook.class);
-        MenuItem viewMovies = mock(ViewMovies.class);
-        MenuItem checkoutMovie = mock(ViewMovies.class);
-        MenuItem quit = mock(Quit.class);
-        menuItems.add(returnBook);
-        menuItems.add(viewBook);
-        menuItems.add(checkOut);
-        menuItems.add(viewMovies);
-        menuItems.add(checkoutMovie);
-        menuItems.add(quit);
-        Menu menu = new Menu(menuItems);
-        Library library = mock(Library.class);
-        Bibloteca bibloteca = mock(ConsoleUI.class);
-
-        menu.select(5, library, bibloteca);
-
-        verify(checkoutMovie, times(1)).action(library, bibloteca);
-
-    }
-
-    @Test
-    public void shouldReturnMovieWhenOptionSixIsSelected() throws InvalidBookException {
-        List<MenuItem> menuItems = new ArrayList<>();
-        MenuItem returnBook = mock(ReturnBook.class);
-        MenuItem viewBook = mock(ViewBooks.class);
-        MenuItem checkOut = mock(CheckOutBook.class);
-        MenuItem viewMovies = mock(ViewMovies.class);
-        MenuItem checkoutMovie = mock(ViewMovies.class);
-        MenuItem returnMovie = mock(ViewMovies.class);
-        MenuItem quit = mock(Quit.class);
-        menuItems.add(returnBook);
-        menuItems.add(viewBook);
-        menuItems.add(checkOut);
-        menuItems.add(viewMovies);
-        menuItems.add(checkoutMovie);
-        menuItems.add(returnMovie);
-        menuItems.add(quit);
-        Menu menu = new Menu(menuItems);
-        Library library = mock(Library.class);
-        Bibloteca bibloteca = mock(ConsoleUI.class);
-
-        menu.select(6, library, bibloteca);
-
-        verify(returnMovie, times(1)).action(library, bibloteca);
 
     }
 }

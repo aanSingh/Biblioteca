@@ -1,6 +1,5 @@
 package com.twu.biblioteca.logic.menu.options;
 
-import com.twu.biblioteca.UI.BiblotecaApp;
 import com.twu.biblioteca.constants.Message;
 import com.twu.biblioteca.logic.Bibloteca;
 import com.twu.biblioteca.logic.Library;
@@ -14,7 +13,7 @@ public class ViewMovies implements MenuItem {
     public void action(Library library, Bibloteca bibloteca) {
         String movieFormat = bibloteca.getFormat();
 
-        StringBuilder movieList = new StringBuilder("\t\t\t"+Message.MOVIE_LIST+"\n");
+        StringBuilder movieList = new StringBuilder("\t\t\t" + Message.MOVIE_LIST + "\n");
         List<Movie> movies = library.movies();
 
         if (movies.size() == 0) {

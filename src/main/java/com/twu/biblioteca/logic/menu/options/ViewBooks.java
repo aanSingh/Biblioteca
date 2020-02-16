@@ -1,6 +1,5 @@
 package com.twu.biblioteca.logic.menu.options;
 
-import com.twu.biblioteca.UI.BiblotecaApp;
 import com.twu.biblioteca.constants.Message;
 import com.twu.biblioteca.logic.Bibloteca;
 import com.twu.biblioteca.logic.Book;
@@ -15,7 +14,7 @@ public class ViewBooks implements MenuItem {
     public void action(Library library, Bibloteca bibloteca) {
         String bookFormat = bibloteca.getFormat();
 
-        StringBuilder bookList = new StringBuilder("\t\t\t"+Message.BOOK_LIST+"\n");
+        StringBuilder bookList = new StringBuilder("\t\t\t" + Message.BOOK_LIST + "\n");
         List<Book> books = library.books();
 
         if (books.size() == 0) {

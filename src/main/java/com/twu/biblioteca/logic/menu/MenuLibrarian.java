@@ -1,16 +1,15 @@
 package com.twu.biblioteca.logic.menu;
 
 import com.twu.biblioteca.constants.Message;
-import com.twu.biblioteca.exceptions.InvalidBookException;
 import com.twu.biblioteca.logic.Bibloteca;
 import com.twu.biblioteca.logic.Library;
 
 import java.util.List;
 
-public class Menu {
+public class MenuLibrarian {
     private List<MenuItem> menuItemCustomer;
 
-    public Menu(List<MenuItem> menuItemCustomer) {
+    public MenuLibrarian(List<MenuItem> menuItemCustomer) {
         this.menuItemCustomer = menuItemCustomer;
     }
 
@@ -23,7 +22,7 @@ public class Menu {
         return menu.toString();
     }
 
-    public void select(int i, Library library, Bibloteca bibloteca) throws InvalidBookException {
+    public void select(int i, Library library, Bibloteca bibloteca) {
         menuItemCustomer.get(i - 1).action(library, bibloteca);
     }
 }

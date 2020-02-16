@@ -22,7 +22,7 @@ class ViewMoviesTest {
     }
 
     @Test
-    public void shouldViewAllMovies() throws InvalidBookException {
+    public void shouldViewAllMovies() {
         Library libraryMock = mock(Library.class);
         MenuItem viewMovies = new ViewMovies();
         Bibloteca bibloteca = mock(ConsoleUI.class);

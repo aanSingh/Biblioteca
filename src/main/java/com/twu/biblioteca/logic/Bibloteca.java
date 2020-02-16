@@ -1,5 +1,7 @@
 package com.twu.biblioteca.logic;
 
+import java.util.List;
+
 public interface Bibloteca {
 
     String getBookTitle();
@@ -15,4 +17,20 @@ public interface Bibloteca {
     void displayMovieList(String movieList);
 
     String getMovieTitle();
+
+    String getLibraryNumber();
+
+    String getPassword();
+
+    void setUser(User user1);
+
+    User getUser();
+
+    void unsetUser();
+
+    void displayCheckoutBookDetails(List<Book> checkoutBooks, User user);
+
+    void displayUserDetails(User user);
+
+//    void login();
 }
